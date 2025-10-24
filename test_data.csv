@@ -1,0 +1,8 @@
+Name, Age, Gender, Score, Country
+Alice, 24, Female, 85, India
+Bob, , Male, 90, USA
+Charlie, 22, Male, , UK
+David, 23, Male, 88, Canada
+, 25, Female, 92, Australia
+Eve, 24, Female, 85, India
+Bob, , Male, 90, USA
