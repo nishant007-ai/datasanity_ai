@@ -13,8 +13,4 @@
     "fertilizer rate for rice": "For rice, generally 80-100 kg nitrogen per hectare; adjust according to soil test.",
     "best organic fertilizer": "Compost, vermicompost, and farmyard manure are excellent organic fertilizers.",
     "how to apply fertilizer properly": "Apply fertilizers evenly and mix them with soil; follow recommended timing for each crop.",
-
-    # 3. Irrigation / Watering
-    "irrigation for wheat": "Irrigate wheat 3–4 times during its growth, preferably in early morning.",
-    "irrigation for rice": "Flood irrigation is best; maintain water level 5–10 cm during the growth period.",
-    "watering crops": "Water crops
+]
