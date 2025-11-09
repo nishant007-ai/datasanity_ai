@@ -48,16 +48,3 @@
     "high-yield wheat varieties": "Choose HD-3086, HD-3210 for higher productivity.",
     "high-yield rice varieties": "Swarna and MTU-1010 are high-yielding rice varieties.",
 
-    # 7. Equipment / Machinery
-    "how to use a tractor": "Start tractor slowly, check oil and fuel levels, and attach implements properly.",
-    "benefits of seed drill": "Seed drills save time, ensure uniform seed spacing, and increase yield.",
-    "farm machinery for irrigation": "Sprinklers, drip systems, and water pumps improve irrigation efficiency.",
-    "plowing methods": "Use conventional plowing, zero-till, or raised bed methods depending on crop.",
-    "harvesting equipment": "Combine harvesters, reapers, and threshers make harvesting faster and efficient.",
-
-    # 8. Market / Product Info
-    "current rate of wheat": "The rate of wheat varies; check local mandi prices or government websites.",
-    "current rate of rice": "Rice rates fluctuate; check your nearest market or online portals.",
-    "where to sell crops": "Sell at local mandis, cooperatives, or online farmer marketplaces.",
-    "how to get good price for crops": "Focus on quality, proper storage, and sell during peak demand seasons.",
-    "fertilizer 
