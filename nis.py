@@ -11,4 +11,9 @@
     "use of fertilizer": "Fertilizers provide essential nutrients like nitrogen, phosphorus, and potassium for healthy crop growth.",
     "fertilizer rate for wheat": "Follow local agricultural guidelines; typically 100-120 kg of nitrogen per hectare for wheat.",
     "fertilizer rate for rice": "For rice, generally 80-100 kg nitrogen per hectare; adjust according to soil test.",
-    "best o
+    "best organic fertilizer": "Compost, vermicompost, and farmyard manure are excellent organic fertilizers.",
+    "how to apply fertilizer properly": "Apply fertilizers evenly and mix them with soil; follow recommended timing for each crop.",
+
+    # 3. Irrigation / Watering
+    "irrigation for wheat": "Irrigate wheat 3–4 times during its growth, preferably in early morning.",
+    "irrigation for
