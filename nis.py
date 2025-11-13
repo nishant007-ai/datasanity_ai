@@ -21,3 +21,29 @@
     "best time to water crops": "Early morning or late evening is ideal to conserve water.",
     "how often to water wheat": "Water wheat every 7–10 days depending on soil moisture and rainfall.",
     "how often to water rice": "Rice fields need regular flooding; water every 3–5 days depending on soil and climate.",
+
+    # 4. Soil / Soil Testing
+    "soil testing": "Test soil for pH, nitrogen, phosphorus, and potassium before fertilization.",
+    "how to improve soil fertility": "Use organic compost, green manure, and crop rotation to improve soil fertility.",
+    "soil ph for wheat": "Wheat grows best in soil with pH 6.0–7.0.",
+    "soil ph for rice": "Rice grows well in soil with pH 5.5–6.5.",
+    "compost benefits": "Compost improves soil structure, water retention, and provides nutrients.",
+    "how to maintain soil health": "Avoid over-fertilization, rotate crops, and add organic matter regularly.",
+
+    # 5. Crop Care / Pests / Diseases
+    "pest control wheat": "Use neem-based pesticides or introduce natural predators for pest control in wheat.",
+    "pest control rice": "Apply organic pesticides and remove affected plants promptly to protect rice crops.",
+    "best time to sow wheat": "October–November is best for sowing wheat in India.",
+    "best time to sow rice": "June–July is ideal for sowing rice.",
+    "harvesting time for wheat": "Harvest wheat when grains are hard and moisture content is around 20%.",
+    "harvesting time for rice": "Harvest rice when grains are golden and moisture content is about 20%.",
+    "disease management wheat": "Rotate crops, use disease-resistant seeds, and avoid waterlogging to prevent diseases.",
+    "disease management rice": "Use certified seeds, maintain proper spacing, and apply organic fungicides if necessary.",
+    "how to protect crops from insects": "Regular field monitoring, trap crops, and organic pesticides help protect crops.",
+    "organic pest control": "Use neem oil, garlic spray, or introduce ladybugs and other natural predators.",
+
+    # 6. Crop Varieties
+    "best wheat variety": "High-yield varieties like HD-2967 and PBW-343 are recommended.",
+    "best rice variety": "Swarna, IR-64, and MTU-1010 are good rice varieties for high yield.",
+    "high-yield wheat varieties": "Choose HD-3086, HD-3210 for higher productivity.",
+    "high-yield rice varieties": "Sw
