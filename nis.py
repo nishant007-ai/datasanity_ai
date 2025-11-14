@@ -35,8 +35,4 @@
     "pest control rice": "Apply organic pesticides and remove affected plants promptly to protect rice crops.",
     "best time to sow wheat": "October–November is best for sowing wheat in India.",
     "best time to sow rice": "June–July is ideal for sowing rice.",
-    "harvesting time for wheat": "Harvest wheat when grains are hard and moisture content is around 20%.",
-    "harvesting time for rice": "Harvest rice when grains are golden and moisture content is about 20%.",
-    "disease management wheat": "Rotate crops, use disease-resistant seeds, and avoid waterlogging to prevent diseases.",
-    "disease management rice": "Use certified seeds, maintain proper spacing, and apply organic fungicides if necessary.",
-    "how to
+    "harve
