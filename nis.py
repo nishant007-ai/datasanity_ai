@@ -16,12 +16,5 @@
 
     # 3. Irrigation / Watering
     "irrigation for wheat": "Irrigate wheat 3–4 times during its growth, preferably in early morning.",
-    "irrigation for rice": "Flood irrigation is best; maintain water level 5–10 cm during the growth period.",
-    "watering crops": "Water crops early in the morning or late evening to reduce evaporation.",
-    "best time to water crops": "Early morning or late evening is ideal to conserve water.",
-    "how often to water wheat": "Water wheat every 7–10 days depending on soil moisture and rainfall.",
-    "how often to water rice": "Rice fields need regular flooding; water every 3–5 days depending on soil and climate.",
-
-    # 4. Soil / Soil Testing
-    "soil testing": "Test soil for pH, nitrogen, phosphorus, and potassium before fertilization.",
+    est soil for pH, nitrogen, phosphorus, and potassium before fertilization.",
     "how to impr
