@@ -24,15 +24,4 @@
 
     # 4. Soil / Soil Testing
     "soil testing": "Test soil for pH, nitrogen, phosphorus, and potassium before fertilization.",
-    "how to improve soil fertility": "Use organic compost, green manure, and crop rotation to improve soil fertility.",
-    "soil ph for wheat": "Wheat grows best in soil with pH 6.0–7.0.",
-    "soil ph for rice": "Rice grows well in soil with pH 5.5–6.5.",
-    "compost benefits": "Compost improves soil structure, water retention, and provides nutrients.",
-    "how to maintain soil health": "Avoid over-fertilization, rotate crops, and add organic matter regularly.",
-
-    # 5. Crop Care / Pests / Diseases
-    "pest control wheat": "Use neem-based pesticides or introduce natural predators for pest control in wheat.",
-    "pest control rice": "Apply organic pesticides and remove affected plants promptly to protect rice crops.",
-    "best time to sow wheat": "October–November is best for sowing wheat in India.",
-    "best time to sow rice": "June–July is ideal for sowing rice.",
-    "harve
+    "how to impr
