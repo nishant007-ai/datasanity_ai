@@ -40,6 +40,4 @@
     "disease management wheat": "Rotate crops, use disease-resistant seeds, and avoid waterlogging to prevent diseases.",
     "disease management rice": "Use certified seeds, maintain proper spacing, and apply organic fungicides if necessary.",
     "how to protect crops from insects": "Regular field monitoring, trap crops, and organic pesticides help protect crops.",
-    "organic pest control": "Use neem oil, garlic spray, or introduce ladybugs and other natural predators.",
-
-    # 6. Crop Varieties
+    
