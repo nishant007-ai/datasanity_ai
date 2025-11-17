@@ -19,12 +19,4 @@ if uploaded_file is not None:
 
     if st.button("🧹 Clean Data"):
         cleaned_data = clean_data(data)
-        st.subheader("✅ Cleaned Data")
-        st.dataframe(cleaned_data)
-
-        if st.button("📄 Generate Report"):
-            report = generate_report(cleaned_data)
-            st.subheader("📑 Generated Report")
-            st.text(report)
-else:
-    st.info("Please upload a CSV or Excel file to get started.")        
+       
