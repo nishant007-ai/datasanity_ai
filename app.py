@@ -15,6 +15,4 @@ if uploaded_file:
 
     user_command = st.text_area("🧠 Enter your data cleaning instruction (e.g., 'Drop nulls, rename columns, detect outliers')")
 
-    if st.button("🚀 Clean & Generate Report"):
-        cleaned_df, code_used = clean_data(df, user_command)
     
