@@ -10,7 +10,4 @@ uploaded_file = st.file_uploader("📤 Upload your CSV or Excel file", type=["cs
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file) if uploaded_file.name.endswith(".csv") else pd.read_excel(uploaded_file)
-    st.subheader("📁 Raw Data Preview")
-    st.dataframe(df.head())
-
-  
+   
