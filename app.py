@@ -9,9 +9,4 @@ st.title("📊 DataSanity AI – Clean, Explain, Automate")
 uploaded_file = st.file_uploader("📤 Upload your CSV or Excel file", type=["csv", "xlsx"])
 
 if uploaded_file is not None:
-    if uploaded_file.name.endswith('.csv'):
-        data = pd.read_csv(uploaded_file)
-    elif uploaded_file.name.endswith('.xlsx'):
-        data = pd.read_excel(uploaded_file)
-    
   
