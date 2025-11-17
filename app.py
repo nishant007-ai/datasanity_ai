@@ -17,9 +17,4 @@ if uploaded_file:
 
     if st.button("🚀 Clean & Generate Report"):
         cleaned_df, code_used = clean_data(df, user_command)
-        report = generate_report(cleaned_df)
-
-        st.subheader("✅ Cleaned Data")
-        st.dataframe(cleaned_df.head())
-
-       
+    
