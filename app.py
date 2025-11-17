@@ -25,5 +25,4 @@ if uploaded_file:
         st.subheader("🧾 Cleaning Code")
         st.code(code_used, language="python")
 
-        st.subheader("📊 Report")
-        st.text(report)
+     
