@@ -22,4 +22,9 @@ if uploaded_file:
         st.subheader("✅ Cleaned Data")
         st.dataframe(cleaned_df.head())
 
-       
+        st.subheader("🧾 Cleaning Code")
+        st.code(code_used, language="python")
+
+        st.subheader("📊 Report")
+        st.text(report)
+z
