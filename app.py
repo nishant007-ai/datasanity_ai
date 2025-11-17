@@ -13,6 +13,4 @@ if uploaded_file:
     st.subheader("📁 Raw Data Preview")
     st.dataframe(df.head())
 
-    user_command = st.text_area("🧠 Enter your data cleaning instruction (e.g., 'Drop nulls, rename columns, detect outliers')")
-
-    
+  
