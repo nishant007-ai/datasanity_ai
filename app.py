@@ -14,9 +14,4 @@ if uploaded_file is not None:
     elif uploaded_file.name.endswith('.xlsx'):
         data = pd.read_excel(uploaded_file)
     
-    st.subheader("📊 Data Preview")
-    st.dataframe(data.head())
-
-    if st.button("🧹 Clean Data"):
-        cleaned_data = clean_data(data)
-       
+  
