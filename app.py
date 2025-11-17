@@ -8,6 +8,23 @@ st.title("📊 DataSanity AI – Clean, Explain, Automate")
 
 uploaded_file = st.file_uploader("📤 Upload your CSV or Excel file", type=["csv", "xlsx"])
 
-if uploaded_file:
-    df = pd.read_csv(uploaded_file) if uploaded_file.name.endswith(".csv") else pd.read_excel(uploaded_file)
-   
+if uploaded_file is not None:
+    if uploaded_file.name.endswith('.csv'):
+        data = pd.read_csv(uploaded_file)
+    elif uploaded_file.name.endswith('.xlsx'):
+        data = pd.read_excel(uploaded_file)
+    
+    st.subheader("📊 Data Preview")
+    st.dataframe(data.head())
+
+    if st.button("🧹 Clean Data"):
+        cleaned_data = clean_data(data)
+        st.subheader("✅ Cleaned Data")
+        st.dataframe(cleaned_data)
+
+        if st.button("📄 Generate Report"):
+            report = generate_report(cleaned_data)
+            st.subheader("📑 Generated Report")
+            st.text(report)
+else:
+    st.info("Please upload a CSV or Excel file to get started.")        
