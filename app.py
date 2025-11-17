@@ -27,6 +27,3 @@ if uploaded_file:
 
         st.subheader("📊 Report")
         st.text(report)
-
-        cleaned_df.to_csv("cleaned/cleaned_file.csv", index=False)
-        st.download_button("📥 Download Cleaned File", data=open("cleaned/cleaned_file.csv", "rb"), file_name="cleaned_data.csv")
