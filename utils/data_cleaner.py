@@ -16,5 +16,4 @@ def clean_data(df, command):
 
     code = response['message']['content'].strip()
 
-    # 🛡️ Safe execution of AI-generated code
-    local_vars = {"df": df.cop
+ 
