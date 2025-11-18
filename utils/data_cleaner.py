@@ -17,12 +17,4 @@ def clean_data(df, command):
     code = response['message']['content'].strip()
 
     # 🛡️ Safe execution of AI-generated code
-    local_vars = {"df": df.copy()}
-    try:
-        exec(code, {}, local_vars)
-        cleaned_df = local_vars["df"]
-    except Exception as e:
-        cleaned_df = df
-        code += f"\n\n# Error during execution: {e}"
-
-    return cleaned_df, code
+    local_vars = {"df": df.cop
