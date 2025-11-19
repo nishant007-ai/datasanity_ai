@@ -13,5 +13,3 @@ def clean_data(df, command):
             {"role": "user", "content": prompt}
         ]
     )
-
-    code = response['message']['content'].strip()
