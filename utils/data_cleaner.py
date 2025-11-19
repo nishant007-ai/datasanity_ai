@@ -22,7 +22,4 @@ def clean_data(df, command):
         exec(code, {}, local_vars)
         cleaned_df = local_vars["df"]
     except Exception as e:
-        cleaned_df = df
-        code += f"\n\n# Error during execution: {e}"
-
-    return cleaned_df, code
+        c
