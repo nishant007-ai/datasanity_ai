@@ -231,14 +231,4 @@ function displayQuestion() {
     document.getElementById("next-q-btn").onclick = () => {
         let val = document.getElementById(q.inputId).value.trim();
 
-        if (q.skipCheck) {
-            currentIndex++;
-            if (currentIndex === quizQuestions.length) return endQuiz();
-            return displayQuestion();
-        }
-
-        // Last question check
-        if (q.correct.map(x => x.toLowerCase()).includes(val.toLowerCase())) {
-            currentIndex++;
-            if (currentIndex === quizQuestions.length) return endQuiz();
       
