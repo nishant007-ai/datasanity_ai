@@ -208,27 +208,4 @@ document.getElementById("startButton").addEventListener("click", () => {
 /* QUIZ QUESTIONS */
 const quizQuestions = [
     { q: "What is your name?", inputId: "q1", correct: "Suhani", skipCheck: true },
-    { q: "What is your pet name?", inputId: "q2", correct: "Suii", skipCheck: true },
-    { q: "When is your birthday?", inputId: "q3", correct: "01/12/2000", skipCheck: true },
-    { q: "Who is your best friend?", inputId: "q6", correct: ["Nishant","Nishu","Nishant Patil"], skipCheck: false }
-];
-
-let currentIndex = 0;
-const quizFlow = document.getElementById("quiz-flow");
-
-function startQuizFlow() { displayQuestion(); }
-
-function displayQuestion() {
-    let q = quizQuestions[currentIndex];
-
-    quizFlow.innerHTML = `
-        <h2 style="color:var(--color-pink);">${q.q}</h2>
-        <input id="${q.inputId}" style="padding:15px; width:80%; max-width:300px;">
-        <button id="next-q-btn" class="glowing-button">Next →</button>
-        <p id="quiz-error" style="color:red; display:none;">Wrong Answer</p>
-    `;
-
-    document.getElementById("next-q-btn").onclick = () => {
-        let val = document.getElementById(q.inputId).value.trim();
-
-      
+    { q: "What is your pet
