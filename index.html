@@ -768,18 +768,4 @@
         // Confetti Burst Effect
         function triggerConfetti() {
             // This is a simple visual burst, not a full canvas confetti engine
-            for (let i = 0; i < 50; i++) {
-                const flake = document.createElement('div');
-                flake.style.cssText = `
-                    position: fixed; 
-                    width: 8px; 
-                    height: 8px; 
-                    background: ${['#ff69b4', '#ffd700', '#8a2be2'][Math.floor(Math.random() * 3)]};
-                    top: ${Math.random() * 10}vh;
-                    left: ${Math.random() * 100}vw;
-                    transform: rotate(${Math.random() * 360}deg);
-                    animation: confettiFall 3s forwards ease-in;
-                    opacity: 0;
-                    z-index: 10000;
-                `;
-             
+      
