@@ -6,10 +6,14 @@
     <title>A Magical Surprise for Suii ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* ==================================== */
+        /* SECTION I: GLOBAL & CINEMATIC STYLES */
+        /* ==================================== */
+
         :root {
-            --color-pink: #ff69b4;
-            --color-purple: #8a2be2;
-            --color-gold: #ffd700;
+            --color-pink: #ff69b4; /* Deep Pink */
+            --color-purple: #8a2be2; /* Blue Violet */
+            --color-gold: #ffd700; /* Gold */
             --bg-dark: #0a0a0a;
             --gradient-magic: linear-gradient(135deg, var(--color-purple), var(--color-pink));
             --font-family: 'Poppins', sans-serif;
@@ -62,6 +66,7 @@
             z-index: 10;
         }
 
+        /* --- Buttons & Global Animations --- */
         .glowing-button {
             background: var(--gradient-magic);
             border: none;
@@ -75,26 +80,57 @@
             animation: pulse 2s infinite;
             transition: .3s;
         }
+        .glowing-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--color-gold);
+        }
+        .glowing-button:disabled {
+             opacity: 0.6;
+             cursor: not-allowed;
+             animation: none;
+        }
         @keyframes pulse {
-            0% { box-shadow: 0 0 10px var(--color-pink); }
-            50% { box-shadow: 0 0 25px var(--color-purple); }
-            100% { box-shadow: 0 0 10px var(--color-pink); }
+            0% { box-shadow: 0 0 10px var(--color-pink), 0 0 10px var(--color-purple); }
+            50% { box-shadow: 0 0 25px var(--color-pink), 0 0 25px var(--color-purple); }
+            100% { box-shadow: 0 0 10px var(--color-pink), 0 0 10px var(--color-purple); }
+        }
+        .mini-btn {
+            padding: 10px 15px;
+            font-size: 1em;
+            border-radius: 20px;
+            color: white;
+            background: linear-gradient(90deg, #5e0094, #ff005d);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
         }
 
+        /* --- Scene Specifics --- */
         #introText {
             font-size: 4em;
             font-weight: 900;
             letter-spacing: 5px;
+            text-shadow: 0 0 10px var(--color-pink);
         }
-
+        input[type="text"] {
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            border: 2px solid var(--color-purple);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
         #cakeImage {
             animation: rotate3D 5s infinite linear;
             border-radius: 50%;
             box-shadow: 0 0 50px var(--color-pink);
         }
         @keyframes rotate3D {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+            0% { transform: rotateY(0deg) scale(1); }
+            50% { transform: rotateY(180deg) scale(1.1); }
+            100% { transform: rotateY(360deg) scale(1); }
         }
 
         .reveal-photo {
@@ -102,21 +138,41 @@
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
+            border: 5px solid var(--color-gold);
         }
 
+        /* Heart Shape CSS Fix */
         .neon-heart {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            border: 4px solid var(--color-pink);
-            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            background-color: transparent;
+            border: none;
+            box-shadow: 0 0 15px var(--color-pink), 0 0 30px var(--color-purple);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             animation: heartbeat 1.5s infinite;
+            z-index: 5;
+            /* Create Heart Shape using clip-path - simpler method */
+            clip-path: polygon(50% 0%, 60% 35%, 100% 35%, 100% 70%, 50% 100%, 0% 70%, 0% 35%, 40% 35%);
         }
 
         @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+        }
+
+        /* Game Area Style */
+        .game-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
         }
 
     </style>
@@ -129,52 +185,48 @@
 
         <audio id="ambient-sound" src="placeholder/romantic_ambient_sound.mp3" loop></audio>
 
-        <!-- INTRO -->
         <div id="introScene" class="scene active">
             <h1 id="introText">A Special Surprise Awaits Suii...</h1>
             <button id="startButton" class="glowing-button">Start Magic ✨</button>
         </div>
 
-        <!-- QUIZ -->
         <div id="quizScene" class="scene">
-            <div id="quiz-flow"></div>
+            <div id="quiz-flow" style="width: 100%; max-width: 500px;"></div>
         </div>
 
-        <!-- REVEAL -->
-        <div id="revealScene" class="scene">
+        <div id="revealScene" class="scene" style="background: rgba(0,0,0,0.8);">
             <div id="cakeLoader">
-                <img id="cakeImage" src="placeholder/3d_rotating_cake.png" width="250" height="250">
-                <p style="font-size:1.5em;color:var(--color-pink);margin-top:30px;">Baking Suii’s Surprise Cake...</p>
+                <img id="cakeImage" src="placeholder/3d_rotating_cake.png" width="250" height="250" alt="Cake">
+                <p style="font-size:1.5em;color:var(--color-pink);margin-top:30px; font-weight: bold;">Baking Suii’s Surprise Cake...</p>
             </div>
         </div>
 
-        <!-- GAMES -->
         <div id="gamesScene" class="scene">
-            <h2 style="color: var(--color-gold);">🎁 Time for some Fun! 🎯</h2>
-            <div id="game-area"></div>
+            <h2 style="color: var(--color-gold); text-shadow: 0 0 5px var(--color-gold);">🎁 Time for some Fun! 🎯</h2>
+            <div id="game-area" style="margin-top:20px; display:flex; flex-direction:column; align-items:center; width: 100%;"></div>
+            <button id="finish-games-btn" class="glowing-button" style="margin-top:40px; display:none;">See Final Surprise! ❤️</button>
         </div>
 
-        <!-- FINAL -->
-        <div id="finalScene" class="scene">
+        <div id="finalScene" class="scene" style="background: radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, rgba(255, 105, 180, 0.4) 100%);">
             <div id="final-content">
-                <div style="display:flex; gap:50px;justify-content:center; position:relative;">
-                    <img id="nishant-img" src="placeholder/nishant_image.jpg" class="reveal-photo">
+                <div style="display:flex; gap:50px;justify-content:center; position:relative; margin-bottom: 50px;">
+                    <img id="nishant-img" src="placeholder/.jpg" class="reveal-photo" alt="Nishant">
                     <div class="neon-heart"></div>
-                    <img id="suhani-img" src="placeholder/suhani_image.jpg" class="reveal-photo">
+                    <img id="suhani-img" src="suhani_image.jpg" class="reveal-photo" alt="Suii">
                 </div>
 
-                <h1 id="typewriter-line1"></h1>
-                <h2 id="typewriter-line2"></h2>
+                <h1 id="typewriter-line1" style="font-size: 2.5em; color: var(--color-gold);"></h1>
+                <h2 id="typewriter-line2" style="font-size: 1.8em; color: white; font-style: italic;"></h2>
 
-                <div id="wishes-container">
-                    <p id="current-wish"></p>
+                <div id="wishes-container" style="margin-top: 30px;">
+                    <p id="current-wish" style="font-size:1.2em; color:var(--color-pink); font-weight: 500; min-height: 50px;"></p>
                     <button id="next-wish-btn" class="glowing-button mini-btn" style="display:none;">Next Wish →</button>
                 </div>
 
                 <div style="margin-top:30px; display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
-                    <button class="glowing-button mini-btn">Upload Custom Images</button>
-                    <button class="glowing-button mini-btn">Download Poster</button>
-                    <button class="glowing-button mini-btn" id="whatsapp-share">Share to Suii</button>
+                    <button class="glowing-button mini-btn">🖼️ Upload Custom Images</button>
+                    <button class="glowing-button mini-btn">⬇️ Download Poster</button>
+                    <button class="glowing-button mini-btn" id="whatsapp-share">📱 Share to Suii</button>
                 </div>
             </div>
         </div>
@@ -182,7 +234,7 @@
     </div>
 
 <script>
-/* ================= JS LOGIC FIXED ================= */
+/* ================= JS LOGIC COMPLETE ================= */
 
 const scenes = {
     intro: document.getElementById('introScene'),
@@ -193,6 +245,7 @@ const scenes = {
 };
 
 let currentScene = "intro";
+let gamesCompleted = 0;
 
 function changeScene(id) {
     scenes[currentScene].classList.remove("active");
@@ -200,12 +253,277 @@ function changeScene(id) {
     scenes[currentScene].classList.add("active");
 }
 
+/* --- Scene 1: Intro --- */
 document.getElementById("startButton").addEventListener("click", () => {
+    // document.getElementById("ambient-sound").play().catch(e => console.log("Autoplay failed."));
     changeScene("quiz");
+    startCanvasMagic('fireflies');
     startQuizFlow();
 });
 
-/* QUIZ QUESTIONS */
+/* --- Scene 2: Quiz Logic --- */
 const quizQuestions = [
     { q: "What is your name?", inputId: "q1", correct: "Suhani", skipCheck: true },
-    { q: "What is your pet
+    { q: "What is your pet name?", inputId: "q2", correct: "Suii", skipCheck: true },
+    { q: "When is your birthday?", inputId: "q3", correct: "01/12/2000", skipCheck: true },
+    { q: "Who is your best friend?", inputId: "q6", correct: ["Nishant","Nishu","Nishant Patil"], skipCheck: false }
+];
+
+let currentIndex = 0;
+const quizFlow = document.getElementById("quiz-flow");
+
+function startQuizFlow() {
+    currentIndex = 0;
+    displayQuestion();
+}
+
+function displayQuestion() {
+    if (currentIndex >= quizQuestions.length) return endQuiz();
+    let q = quizQuestions[currentIndex];
+
+    quizFlow.innerHTML = `
+        <h2 style="color:var(--color-pink);">${q.q}</h2>
+        <input id="${q.inputId}" type="text" placeholder="Type here..." style="width:80%; max-width:300px;">
+        <button id="next-q-btn" class="glowing-button">Next →</button>
+        <p id="quiz-error" style="color:red; display:none; background:rgba(255,0,0,0.1); padding:5px; border-radius:5px;">Wrong Answer. Try again!</p>
+    `;
+
+    document.getElementById("next-q-btn").onclick = () => {
+        let val = document.getElementById(q.inputId).value.trim();
+        const errorElement = document.getElementById("quiz-error");
+
+        if (q.skipCheck || q.correct.map(x => x.toLowerCase()).includes(val.toLowerCase())) {
+            errorElement.style.display = "none";
+            document.getElementById("next-q-btn").disabled = true;
+            document.getElementById("next-q-btn").textContent = 'Loading...';
+            setTimeout(() => {
+                currentIndex++;
+                displayQuestion();
+            }, 500);
+        } else {
+            errorElement.style.display = "block";
+        }
+    };
+    
+    document.getElementById(q.inputId).addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') document.getElementById("next-q-btn").click();
+    });
+}
+
+function endQuiz() {
+    changeScene("reveal");
+    startCanvasMagic('hearts-balloons-fireworks');
+    setTimeout(() => initMiniGames(), 4000);
+}
+
+/* --- Scene 4: Games Logic --- */
+function initMiniGames() {
+    changeScene("games");
+    const gameArea = document.getElementById('game-area');
+    gamesCompleted = 0;
+
+    gameArea.innerHTML = `
+        <div id="game1-container" class="game-container">
+            <h3>🎁 Game 1: Choose a Magical Gift!</h3>
+            <div id="gift-options" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+                <button class="glowing-button mini-btn" data-gift="teddy">🧸 Teddy</button>
+                <button class="glowing-button mini-btn" data-gift="rose">🌹 Rose</button>
+                <button class="glowing-button mini-btn" data-gift="ring">💍 Ring</button>
+            </div>
+            <p id="gift-result" style="margin-top: 20px; font-weight: bold; color: var(--color-pink); height: 30px;"></p>
+        </div>
+    `;
+
+    // Game 1 Logic
+    document.querySelectorAll('#gift-options button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (gamesCompleted === 0) {
+                document.getElementById('gift-result').innerHTML = `You chose a ${e.target.textContent.trim()}! (Game 1 Complete!)`;
+                document.getElementById('gift-options').style.pointerEvents = 'none';
+                gamesCompleted++;
+                checkGameCompletion();
+            }
+        });
+    });
+}
+
+function checkGameCompletion() {
+    // Only one game for this version, so transition immediately
+    if (gamesCompleted >= 1) { 
+        document.getElementById('finish-games-btn').style.display = 'block';
+    }
+}
+
+document.getElementById('finish-games-btn').addEventListener('click', () => {
+    changeScene('final');
+    startFinalReveal();
+});
+
+
+/* --- Scene 5: Final Reveal & Wishes --- */
+
+const birthdayWishes = [
+    "Happy Birthday, my Suii. You're the magic in my everyday, the heartbeat in my story, and the most precious chapter in my life. ❤️",
+    "Wishing you a year filled with the same unconditional love, respect, and boundless happiness you give to me. Always and forever, Nishu.",
+    "I hope today feels as cinematic and magical as you make my life feel. You are a masterpiece, Suii. ✨",
+    "On your special day, may all the glitter and gold from this magical realm we've created rain down on you. Dream big!",
+    "Cheers to the girl who's as sweet as chocolate, as bold as a heart explosion, and as reliable as a Nishu promise. Have the absolute best day! 🥳"
+];
+let currentWishIndex = 0;
+
+function typeWriter(element, text, speed, callback) {
+    let i = 0;
+    element.innerHTML = '';
+    function typing() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i).replace('\n', '<br>');
+            i++;
+            setTimeout(typing, speed);
+        } else if (callback) {
+            callback();
+        }
+    }
+    typing();
+}
+
+function startFinalReveal() {
+    startCanvasMagic('heart-rain-lights');
+
+    const line1 = document.getElementById('typewriter-line1');
+    const line2 = document.getElementById('typewriter-line2');
+    
+    // Line 1: Main Birthday Wish
+    typeWriter(line1, "Happy Birthday My Best Friend Suii ❤️\n\n You are the most special person in my life.", 70, () => {
+        // Line 2: Sender/Signature
+        setTimeout(() => {
+            typeWriter(line2, "From: Nishu ❤️ With Love & Respect Always.", 50, () => {
+                displayWishes();
+            });
+        }, 500);
+    });
+}
+
+function displayWishes() {
+    const wishElement = document.getElementById('current-wish');
+    const nextBtn = document.getElementById('next-wish-btn');
+    
+    currentWishIndex = 0;
+    wishElement.textContent = birthdayWishes[currentWishIndex];
+    nextBtn.style.display = 'inline-block';
+
+    nextBtn.addEventListener('click', () => {
+        currentWishIndex = (currentWishIndex + 1) % birthdayWishes.length;
+        wishElement.textContent = birthdayWishes[currentWishIndex];
+        nextBtn.textContent = (currentWishIndex === birthdayWishes.length - 1) ? 'View First Wish Again' : 'View Next Wish →';
+    });
+}
+
+
+/* --- Canvas Magic (Functional Particle System) --- */
+
+const canvas = document.getElementById('magicCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let canvasAnimationId;
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas(); 
+
+function startCanvasMagic(effect) {
+    cancelAnimationFrame(canvasAnimationId);
+    particles = [];
+    
+    if (effect === 'fireflies') {
+        for (let i = 0; i < 50; i++) particles.push(new Firefly());
+    } else if (effect === 'heart-rain-lights') {
+        for (let i = 0; i < 50; i++) particles.push(new Firefly());
+        for (let i = 0; i < 100; i++) particles.push(new HeartRainDrop());
+    } else if (effect === 'hearts-balloons-fireworks') {
+        for (let i = 0; i < 50; i++) particles.push(new Firefly());
+        for (let i = 0; i < 50; i++) particles.push(new HeartRainDrop());
+        // For a more dramatic effect during the reveal
+    }
+    animateCanvas();
+}
+
+class Firefly {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random();
+    }
+    update() {
+        this.x += this.speedX + Math.sin(Date.now() * 0.001) * 0.3;
+        this.y += this.speedY + Math.cos(Date.now() * 0.001) * 0.3;
+        this.opacity = Math.abs(Math.sin(Date.now() * 0.0005 + this.x * 0.01)) * 0.8;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+    draw() {
+        ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
+        ctx.shadowColor = 'yellow';
+        ctx.shadowBlur = 5;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+    }
+}
+
+class HeartRainDrop {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = -Math.random() * canvas.height;
+        this.speed = Math.random() * 1.5 + 1;
+        this.size = Math.random() * 10 + 5;
+        this.color = `rgba(255, 105, 180, ${Math.random() * 0.5 + 0.3})`;
+    }
+    update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) this.y = -this.size;
+    }
+    draw() {
+        // Simple approximation of a heart shape for the particle rain
+        ctx.fillStyle = this.color;
+        const r = this.size * 0.4;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y + r * 0.4);
+        ctx.bezierCurveTo(this.x + r * 1.5, this.y - r * 1.5, this.x + r * 3, this.y - r * 0.5, this.x + r * 1.5, this.y + r * 2.5);
+        ctx.lineTo(this.x, this.y + r * 3);
+        ctx.lineTo(this.x - r * 1.5, this.y + r * 2.5);
+        ctx.bezierCurveTo(this.x - r * 3, this.y - r * 0.5, this.x - r * 1.5, this.y - r * 1.5, this.x, this.y + r * 0.4);
+        ctx.fill();
+    }
+}
+
+function animateCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Background gradient for depth
+    const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+    gradient.addColorStop(0, 'rgba(10, 10, 10, 0.05)');
+    gradient.addColorStop(1, 'rgba(10, 10, 10, 0.5)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    
+    canvasAnimationId = requestAnimationFrame(animateCanvas);
+}
+
+// Start the initial effect
+startCanvasMagic('fireflies');
+
+</script>
+</body>
+</html>
