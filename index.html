@@ -437,4 +437,93 @@ function startCanvasMagic(effect) {
     cancelAnimationFrame(canvasAnimationId);
     particles = [];
     
-    if (effect 
+    if (effect === 'fireflies') {
+        for (let i = 0; i < 50; i++) particles.push(new Firefly());
+    } else if (effect === 'heart-rain-lights') {
+        for (let i = 0; i < 50; i++) particles.push(new Firefly());
+        for (let i = 0; i < 100; i++) particles.push(new HeartRainDrop());
+    } else if (effect === 'hearts-balloons-fireworks') {
+        for (let i = 0; i < 50; i++) particles.push(new Firefly());
+        for (let i = 0; i < 50; i++) particles.push(new HeartRainDrop());
+        // For a more dramatic effect during the reveal
+    }
+    animateCanvas();
+}
+
+class Firefly {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random();
+    }
+    update() {
+        this.x += this.speedX + Math.sin(Date.now() * 0.001) * 0.3;
+        this.y += this.speedY + Math.cos(Date.now() * 0.001) * 0.3;
+        this.opacity = Math.abs(Math.sin(Date.now() * 0.0005 + this.x * 0.01)) * 0.8;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+    draw() {
+        ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
+        ctx.shadowColor = 'yellow';
+        ctx.shadowBlur = 5;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+    }
+}
+
+class HeartRainDrop {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = -Math.random() * canvas.height;
+        this.speed = Math.random() * 1.5 + 1;
+        this.size = Math.random() * 10 + 5;
+        this.color = `rgba(255, 105, 180, ${Math.random() * 0.5 + 0.3})`;
+    }
+    update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) this.y = -this.size;
+    }
+    draw() {
+        // Simple approximation of a heart shape for the particle rain
+        ctx.fillStyle = this.color;
+        const r = this.size * 0.4;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y + r * 0.4);
+        ctx.bezierCurveTo(this.x + r * 1.5, this.y - r * 1.5, this.x + r * 3, this.y - r * 0.5, this.x + r * 1.5, this.y + r * 2.5);
+        ctx.lineTo(this.x, this.y + r * 3);
+        ctx.lineTo(this.x - r * 1.5, this.y + r * 2.5);
+        ctx.bezierCurveTo(this.x - r * 3, this.y - r * 0.5, this.x - r * 1.5, this.y - r * 1.5, this.x, this.y + r * 0.4);
+        ctx.fill();
+    }
+}
+
+function animateCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Background gradient for depth
+    const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+    gradient.addColorStop(0, 'rgba(10, 10, 10, 0.05)');
+    gradient.addColorStop(1, 'rgba(10, 10, 10, 0.5)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    
+    canvasAnimationId = requestAnimationFrame(animateCanvas);
+}
+
+// Start the initial effect
+startCanvasMagic('fireflies');
+
+</script>
+</body>
+</html>
