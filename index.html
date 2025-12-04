@@ -410,31 +410,3 @@ function displayWishes() {
     currentWishIndex = 0;
     wishElement.textContent = birthdayWishes[currentWishIndex];
     nextBtn.style.display = 'inline-block';
-
-    nextBtn.addEventListener('click', () => {
-        currentWishIndex = (currentWishIndex + 1) % birthdayWishes.length;
-        wishElement.textContent = birthdayWishes[currentWishIndex];
-        nextBtn.textContent = (currentWishIndex === birthdayWishes.length - 1) ? 'View First Wish Again' : 'View Next Wish →';
-    });
-}
-
-
-/* --- Canvas Magic (Functional Particle System) --- */
-
-const canvas = document.getElementById('magicCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let canvasAnimationId;
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); 
-
-function startCanvasMagic(effect) {
-    cancelAnimationFrame(canvasAnimationId);
-    particles = [];
-    
-    if (effect 
