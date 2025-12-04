@@ -498,22 +498,4 @@ class HeartRainDrop {
         ctx.bezierCurveTo(this.x + r * 1.5, this.y - r * 1.5, this.x + r * 3, this.y - r * 0.5, this.x + r * 1.5, this.y + r * 2.5);
         ctx.lineTo(this.x, this.y + r * 3);
         ctx.lineTo(this.x - r * 1.5, this.y + r * 2.5);
-        ctx.bezierCurveTo(this.x - r * 3, this.y - r * 0.5, this.x - r * 1.5, this.y - r * 1.5, this.x, this.y + r * 0.4);
-        ctx.fill();
-    }
-}
-
-function animateCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Background gradient for depth
-    const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
-    gradient.addColorStop(0, 'rgba(10, 10, 10, 0.05)');
-    gradient.addColorStop(1, 'rgba(10, 10, 10, 0.5)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    }
+        ctx
