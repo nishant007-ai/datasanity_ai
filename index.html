@@ -327,4 +327,114 @@ function initMiniGames() {
             <h3>🎁 Game 1: Choose a Magical Gift!</h3>
             <div id="gift-options" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
                 <button class="glowing-button mini-btn" data-gift="teddy">🧸 Teddy</button>
-         
+                <button class="glowing-button mini-btn" data-gift="rose">🌹 Rose</button>
+                <button class="glowing-button mini-btn" data-gift="ring">💍 Ring</button>
+            </div>
+            <p id="gift-result" style="margin-top: 20px; font-weight: bold; color: var(--color-pink); height: 30px;"></p>
+        </div>
+    `;
+
+    // Game 1 Logic
+    document.querySelectorAll('#gift-options button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (gamesCompleted === 0) {
+                document.getElementById('gift-result').innerHTML = `You chose a ${e.target.textContent.trim()}! (Game 1 Complete!)`;
+                document.getElementById('gift-options').style.pointerEvents = 'none';
+                gamesCompleted++;
+                checkGameCompletion();
+            }
+        });
+    });
+}
+
+function checkGameCompletion() {
+    // Only one game for this version, so transition immediately
+    if (gamesCompleted >= 1) { 
+        document.getElementById('finish-games-btn').style.display = 'block';
+    }
+}
+
+document.getElementById('finish-games-btn').addEventListener('click', () => {
+    changeScene('final');
+    startFinalReveal();
+});
+
+
+/* --- Scene 5: Final Reveal & Wishes --- */
+
+const birthdayWishes = [
+    "Happy Birthday, my Suii. You're the magic in my everyday, the heartbeat in my story, and the most precious chapter in my life. ❤️",
+    "Wishing you a year filled with the same unconditional love, respect, and boundless happiness you give to me. Always and forever, Nishu.",
+    "I hope today feels as cinematic and magical as you make my life feel. You are a masterpiece, Suii. ✨",
+    "On your special day, may all the glitter and gold from this magical realm we've created rain down on you. Dream big!",
+    "Cheers to the girl who's as sweet as chocolate, as bold as a heart explosion, and as reliable as a Nishu promise. Have the absolute best day! 🥳"
+];
+let currentWishIndex = 0;
+
+function typeWriter(element, text, speed, callback) {
+    let i = 0;
+    element.innerHTML = '';
+    function typing() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i).replace('\n', '<br>');
+            i++;
+            setTimeout(typing, speed);
+        } else if (callback) {
+            callback();
+        }
+    }
+    typing();
+}
+
+function startFinalReveal() {
+    startCanvasMagic('heart-rain-lights');
+
+    const line1 = document.getElementById('typewriter-line1');
+    const line2 = document.getElementById('typewriter-line2');
+    
+    // Line 1: Main Birthday Wish
+    typeWriter(line1, "Happy Birthday My Best Friend Suii ❤️\n\n You are the most special person in my life.", 70, () => {
+        // Line 2: Sender/Signature
+        setTimeout(() => {
+            typeWriter(line2, "From: Nishu ❤️ With Love & Respect Always.", 50, () => {
+                displayWishes();
+            });
+        }, 500);
+    });
+}
+
+function displayWishes() {
+    const wishElement = document.getElementById('current-wish');
+    const nextBtn = document.getElementById('next-wish-btn');
+    
+    currentWishIndex = 0;
+    wishElement.textContent = birthdayWishes[currentWishIndex];
+    nextBtn.style.display = 'inline-block';
+
+    nextBtn.addEventListener('click', () => {
+        currentWishIndex = (currentWishIndex + 1) % birthdayWishes.length;
+        wishElement.textContent = birthdayWishes[currentWishIndex];
+        nextBtn.textContent = (currentWishIndex === birthdayWishes.length - 1) ? 'View First Wish Again' : 'View Next Wish →';
+    });
+}
+
+
+/* --- Canvas Magic (Functional Particle System) --- */
+
+const canvas = document.getElementById('magicCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let canvasAnimationId;
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas(); 
+
+function startCanvasMagic(effect) {
+    cancelAnimationFrame(canvasAnimationId);
+    particles = [];
+    
+    if (effect 
