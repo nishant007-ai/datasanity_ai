@@ -473,16 +473,4 @@ class Firefly {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
-        ctx.shadowBlur = 0;
-    }
-}
-
-class HeartRainDrop {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = -Math.random() * canvas.height;
-        this.speed = Math.random() * 1.5 + 1;
-        this.size = Math.random() * 10 + 5;
-        this.color = `rgba(255, 105, 180, ${Math.random() * 0.5 + 0.3})`;
-    }
-    update() {
+        ctx.shado
