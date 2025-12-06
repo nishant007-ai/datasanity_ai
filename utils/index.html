@@ -1,14 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joining Request - Niva Ecotech</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.3;
-    color: #333;
-    background-color: #f8f9fa;
-    padding: 20px;
-  }s
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALCHATS | Feel the Future of Eyewear</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-animation">
+            <div class="neon-circle"></div>
+            <div class="loading-text">LOADING ALCHATS EXPERIENCE</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="luxury-navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">ALCHATS</span>
+                <div class="logo-glow"></div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link magnetic-hover">Home</a></li>
+                <li><a href="#try-on" class="nav-link magnetic-hover">3D Try-On</a></li>
+                <li><a href="#products" class="nav-link magnetic-hover">Products</a></li>
+                <li><a href="#categories" class="nav-link magnetic-hover">Categories</a></li>
+                <li><a href="#about" class="nav-link magnetic-hover">About</a></li>
+                <li><a href="#testimonials" class="nav-link magnetic-hover">Testimonials</a></li>
+                <li class="nav-actions">
+                    <a href="#" class="nav-icon" id="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-counter">0</span>
+                    </a>
+                    <a href="#" class="nav-icon" id="wishlist-icon">
+                        <i class="fas fa-heart"></i>
+                        <span class="wishlist-counter">0</span>
+                    </a>
+                    <a href="#" class="nav-icon" id="user-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="mobile-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home/Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="particles-background" id="particles"></div>
+        
+        <!-- 3D Model Container -->
+        <div class="threejs-container" id="sunglasses-model">
+            <canvas id="sunglasses-canvas"></canvas>
+        </div>
+        
+        <div class="hero-content">
+            <div class="cinematic-text">
+                <h1 class="title-reveal">ALCHATS</h1>
+                <h2 class="subtitle-reveal">FEEL THE FUTURE OF EYEWEAR</h2>
+                <h3 class="tagline-reveal">UNSTOPPABLE STYLE</h3>
+            </div>
+            
+            <div class="cta-buttons">
+                <button class="btn-primary neon-glow">
+                    <span>EXPLORE COLLECTION</span>
+                    <div class="btn-sparkle"></div>
+                </button>
+                <button class="btn-secondary glass-morphism">
+                    <span>3D TRY-ON LIVE</span>
+                    <i class="fas fa-camera"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <div class="scroll-text">SCROLL TO DISCOVER</div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-header">
+            <h2 class="section-title">PREMIUM COLLECTION</h2>
+            <p class="section-subtitle">Crafted for the Visionary</p>
+        </div>
+        
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <div class="categories-container">
+            <div class="category-card" data-category="sport">
+                <div class="category-overlay"></div>
+                <h3>SPORT</h3>
+                <p>Unstoppable Energy</p>
+                <div class="category-lens-glow"></div>
+            </div>
+            
+            <div class="category-card" data-category="classic">
+                <div class="category-overlay"></div>
+                <h3>CLASSIC</h3>
+                <p>For the Modern Gentleman</p>
+                <div class="category-lens-glow"></div>
+            </div>
+            
+            <div class="category-card" data-category="luxury">
+                <div class="category-overlay"></div>
+                <h3>LUXURY</h3>
+                <p>Fearless. Bold. Iconic</p>
+                <div class="category-lens-glow"></div>
+            </div>
+            
+            <div class="category-card" data-category="trending">
+                <div class="category-overlay"></div>
+                <h3>TRENDING</h3>
+                <p>Born to Stand Out</p>
+                <div class="category-lens-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP Membership -->
+    <section class="vip-section">
+        <div class="vip-container glass-morphism">
+            <div class="vip-badge">
+                <i class="fas fa-crown"></i>
+                <span>VIP</span>
+            </div>
+            <h2>ELEVATE YOUR EXPERIENCE</h2>
+            <p class="vip-price">₹299 <span>/ year</span></p>
+            
+            <ul class="vip-benefits">
+                <li><i class="fas fa-check-circle"></i> Free Premium Case</li>
+                <li><i class="fas fa-check-circle"></i> Free Express Delivery</li>
+                <li><i class="fas fa-check-circle"></i> Exclusive New Drops</li>
+                <li><i class="fas fa-check-circle"></i> Limited Edition Frames</li>
+            </ul>
+            
+            <button class="btn-vip">
+                <span>BECOME A VIP MEMBER</span>
+                <i class="fas fa-bolt"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>YOUR CART</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items dynamically loaded -->
+        </div>
+        <div class="cart-upsells">
+            <h4>COMPLETE YOUR LOOK</h4>
+            <!-- Upsell items -->
+        </div>
+        <div class="cart-total">
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">₹0</span>
+            </div>
+            <button class="btn-checkout">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/threejs-setup.js"></script>
+    <script src="scripts/cart.js"></script>
+    <script src="scripts/product-interactions.js"></script>
+    <script src="scripts/animations.js"></script>
+</body>
+</html>
