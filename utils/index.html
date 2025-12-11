@@ -144,4 +144,53 @@
     <section class="vip-section">
         <div class="vip-container glass-morphism">
             <div class="vip-badge">
-                <i cl
+                <i class="fas fa-crown"></i>
+                <span>VIP</span>
+            </div>
+            <h2>ELEVATE YOUR EXPERIENCE</h2>
+            <p class="vip-price">₹299 <span>/ year</span></p>
+            
+            <ul class="vip-benefits">
+                <li><i class="fas fa-check-circle"></i> Free Premium Case</li>
+                <li><i class="fas fa-check-circle"></i> Free Express Delivery</li>
+                <li><i class="fas fa-check-circle"></i> Exclusive New Drops</li>
+                <li><i class="fas fa-check-circle"></i> Limited Edition Frames</li>
+            </ul>
+            
+            <button class="btn-vip">
+                <span>BECOME A VIP MEMBER</span>
+                <i class="fas fa-bolt"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>YOUR CART</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items dynamically loaded -->
+        </div>
+        <div class="cart-upsells">
+            <h4>COMPLETE YOUR LOOK</h4>
+            <!-- Upsell items -->
+        </div>
+        <div class="cart-total">
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">₹0</span>
+            </div>
+            <button class="btn-checkout">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/threejs-setup.js"></script>
+    <script src="scripts/cart.js"></script>
+    <script src="scripts/product-interactions.js"></script>
+    <script src="scripts/animations.js"></script>
+</body>
+</html>
