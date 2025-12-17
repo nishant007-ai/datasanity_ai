@@ -14,6 +14,8 @@
             --color-pink: #ff69b4; /* Deep Pink */
             --color-purple: #8a2be2; /* Blue Violet */
             --color-gold: #ffd700; /* Gold */
+            --color-green: #00ff88; /* Neon Green */
+            --color-blue: #00ccff; /* Sky Blue */
             --bg-dark: #0a0a0a;
             --gradient-magic: linear-gradient(135deg, var(--color-purple), var(--color-pink));
             --font-family: 'Poppins', sans-serif;
@@ -79,6 +81,7 @@
             box-shadow: 0 0 20px var(--color-pink);
             animation: pulse 2s infinite;
             transition: .3s;
+            margin: 10px;
         }
         .glowing-button:hover {
             transform: scale(1.05);
@@ -95,12 +98,26 @@
             100% { box-shadow: 0 0 10px var(--color-pink), 0 0 10px var(--color-purple); }
         }
         .mini-btn {
-            padding: 10px 15px;
+            padding: 10px 20px;
             font-size: 1em;
             border-radius: 20px;
             color: white;
-            background: linear-gradient(90deg, #5e0094, #ff005d);
+            background: linear-gradient(90deg, var(--color-purple), var(--color-pink));
             box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        .mini-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--color-gold);
+        }
+        .action-btn {
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            color: var(--bg-dark);
+            font-weight: bold;
+            padding: 12px 25px;
         }
 
         /* --- Scene Specifics --- */
@@ -109,6 +126,7 @@
             font-weight: 900;
             letter-spacing: 5px;
             text-shadow: 0 0 10px var(--color-pink);
+            margin-bottom: 30px;
         }
         input[type="text"] {
             padding: 15px;
@@ -120,7 +138,7 @@
             width: 80%;
             max-width: 400px;
             text-align: center;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
         #cakeImage {
             animation: rotate3D 5s infinite linear;
@@ -141,7 +159,7 @@
             border: 5px solid var(--color-gold);
         }
 
-        /* Heart Shape CSS Fix */
+        /* Heart Shape */
         .neon-heart {
             position: absolute;
             width: 150px;
@@ -154,7 +172,6 @@
             transform: translate(-50%, -50%);
             animation: heartbeat 1.5s infinite;
             z-index: 5;
-            /* Create Heart Shape using clip-path - simpler method */
             clip-path: polygon(50% 0%, 60% 35%, 100% 35%, 100% 70%, 50% 100%, 0% 70%, 0% 35%, 40% 35%);
         }
 
@@ -173,6 +190,194 @@
             max-width: 500px;
             margin-bottom: 20px;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+            height: 20px;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-pink), var(--color-purple));
+            width: 0%;
+            transition: width 0.5s;
+            border-radius: 10px;
+        }
+
+        /* Game Specific Styles */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .memory-card {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--color-purple), var(--color-pink));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            perspective: 1000px;
+        }
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--color-gold), var(--color-green));
+        }
+        .memory-card.matched {
+            background: linear-gradient(135deg, var(--color-green), var(--color-blue));
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--color-green);
+        }
+
+        .word-scramble-container {
+            margin: 20px 0;
+        }
+        .scrambled-word {
+            font-size: 2em;
+            letter-spacing: 10px;
+            color: var(--color-gold);
+            margin: 20px 0;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--color-purple);
+        }
+        .letter-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .letter-option {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-purple), var(--color-pink));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: grab;
+            user-select: none;
+        }
+        .letter-option.dragging {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+        .letter-slots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .letter-slot {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed var(--color-purple);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+        .letter-slot.filled {
+            background: rgba(0, 255, 136, 0.2);
+            border: 2px solid var(--color-green);
+        }
+
+        .completion-celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+        .completion-celebration.active {
+            display: flex;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .celebration-text {
+            font-size: 3em;
+            color: var(--color-gold);
+            text-align: center;
+            text-shadow: 0 0 20px var(--color-pink);
+            animation: pulse 2s infinite;
+            margin-bottom: 30px;
+        }
+
+        /* Typewriter cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--color-gold);
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Game Stats */
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            min-width: 120px;
+        }
+        .stat-value {
+            color: var(--color-gold);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Achievement Badges */
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-pink));
+            color: var(--bg-dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
         }
 
     </style>
@@ -180,37 +385,94 @@
 
 <body>
     <div class="scene-container">
+        <canvas id="magicCanvas"></canvas>
+        <audio id="ambient-sound" loop></audio>
+        <audio id="celebration-sound"></audio>
 
-        <canvas id="magicCanvas" style="position:absolute; top:0; left:0; z-index:1;"></canvas>
+        <!-- Completion Celebration Overlay -->
+        <div class="completion-celebration" id="completionCelebration">
+            <div class="celebration-text">🎉 ALL GAMES COMPLETED! 🎉</div>
+            <div style="font-size: 1.5em; color: var(--color-green); margin-bottom: 20px;">
+                Perfect Score: <span id="finalScore">0</span> Points!
+            </div>
+            <div style="margin-bottom: 30px;">
+                <div class="achievement-badge">🎯 Master Gamer</div>
+                <div class="achievement-badge">🎂 Birthday Champ</div>
+                <div class="achievement-badge">❤️ Suii's Hero</div>
+            </div>
+            <button class="glowing-button action-btn" id="continueToFinal">Continue to Final Surprise! 🎁</button>
+        </div>
 
-        <audio id="ambient-sound" src="placeholder/romantic_ambient_sound.mp3" loop></audio>
-
+        <!-- Intro Scene -->
         <div id="introScene" class="scene active">
             <h1 id="introText">A Special Surprise Awaits Suii...</h1>
             <button id="startButton" class="glowing-button">Start Magic ✨</button>
         </div>
 
+        <!-- Quiz Scene -->
         <div id="quizScene" class="scene">
             <div id="quiz-flow" style="width: 100%; max-width: 500px;"></div>
         </div>
 
+        <!-- Cake Reveal Scene -->
         <div id="revealScene" class="scene" style="background: rgba(0,0,0,0.8);">
             <div id="cakeLoader">
-                <img id="cakeImage" src="placeholder/3d_rotating_cake.png" width="250" height="250" alt="Cake">
-                <p style="font-size:1.5em;color:var(--color-pink);margin-top:30px; font-weight: bold;">Baking Suii’s Surprise Cake...</p>
+               <img id="cakeImage" src="suii_cake.jpg" width="250" height="250" alt="Birthday Cake">
+                <p style="font-size:1.5em;color:var(--color-pink);margin-top:30px; font-weight: bold;">
+                    Baking Suii's Birthday Cake with Love... 🎂✨
+                </p>
+                <div class="progress-container" style="width: 50%; margin-top: 20px;">
+                    <div class="progress-bar" id="cakeProgress"></div>
+                </div>
             </div>
         </div>
 
+        <!-- Games Scene -->
         <div id="gamesScene" class="scene">
-            <h2 style="color: var(--color-gold); text-shadow: 0 0 5px var(--color-gold);">🎁 Time for some Fun! 🎯</h2>
-            <div id="game-area" style="margin-top:20px; display:flex; flex-direction:column; align-items:center; width: 100%;"></div>
-            <button id="finish-games-btn" class="glowing-button" style="margin-top:40px; display:none;">See Final Surprise! ❤️</button>
+            <h2 style="color: var(--color-gold); text-shadow: 0 0 10px var(--color-gold); margin-bottom: 10px;">
+                🎮 BIRTHDAY GAME ARCADE 🎮
+            </h2>
+            <p style="color: var(--color-pink); margin-bottom: 20px;">
+                Complete all games to unlock the final surprise!
+            </p>
+            
+            <div class="game-stats">
+                <div class="stat-item">
+                    <div>🏆 Score</div>
+                    <div class="stat-value" id="totalScore">0</div>
+                </div>
+                <div class="stat-item">
+                    <div>🎯 Games</div>
+                    <div class="stat-value" id="gamesCompleted">0/5</div>
+                </div>
+                <div class="stat-item">
+                    <div>⏱️ Time</div>
+                    <div class="stat-value" id="totalTime">00:00</div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="gameProgress"></div>
+            </div>
+
+            <div id="game-area" style="width: 100%; max-width: 600px; margin-top: 20px;"></div>
+
+            <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                <button class="mini-btn action-btn" id="hintBtn">💡 Get Hint</button>
+                <button class="mini-btn action-btn" id="skipBtn">⏭️ Skip Game</button>
+                <button class="mini-btn action-btn" id="restartBtn">🔄 Restart All</button>
+            </div>
+
+            <button id="finish-games-btn" class="glowing-button" style="margin-top:30px; display:none;">
+                🎉 Unlock Final Surprise! ❤️
+            </button>
         </div>
 
+        <!-- Final Scene -->
         <div id="finalScene" class="scene" style="background: radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, rgba(255, 105, 180, 0.4) 100%);">
             <div id="final-content">
                 <div style="display:flex; gap:50px;justify-content:center; position:relative; margin-bottom: 50px;">
-                    <img id="nishant-img" src="placeholder/.jpg" class="reveal-photo" alt="Nishant">
+                    <img id="nishant-img" src="nishant_photo.jpg" class="reveal-photo" alt="suuii2">
                     <div class="neon-heart"></div>
                     <img id="suhani-img" src="suhani_image.jpg" class="reveal-photo" alt="Suii">
                 </div>
@@ -224,17 +486,16 @@
                 </div>
 
                 <div style="margin-top:30px; display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
-                    <button class="glowing-button mini-btn">🖼️ Upload Custom Images</button>
-                    <button class="glowing-button mini-btn">⬇️ Download Poster</button>
-                    <button class="glowing-button mini-btn" id="whatsapp-share">📱 Share to Suii</button>
+                    <button class="glowing-button mini-btn" id="uploadBtn">🖼️ Upload Photos</button>
+                    <button class="glowing-button mini-btn" id="downloadBtn">⬇️ Download Memory</button>
+                    <button class="glowing-button mini-btn" id="whatsapp-share">📱 Share with Suii</button>
                 </div>
             </div>
         </div>
-
     </div>
 
 <script>
-/* ================= JS LOGIC COMPLETE ================= */
+/* ================= ENHANCED GAME SYSTEM ================= */
 
 const scenes = {
     intro: document.getElementById('introScene'),
@@ -244,8 +505,52 @@ const scenes = {
     final: document.getElementById('finalScene')
 };
 
+// Game State Variables
 let currentScene = "intro";
-let gamesCompleted = 0;
+let totalScore = 0;
+let gamesPlayed = 0;
+let totalGames = 5; // Total number of mini-games
+let gameStartTime;
+let totalTimeElapsed = 0;
+let currentGame = null;
+let gameTimer;
+
+// Initialize game system
+function initGameSystem() {
+    totalScore = 0;
+    gamesPlayed = 0;
+    gameStartTime = Date.now();
+    updateGameStats();
+    startTotalTimer();
+}
+
+function startTotalTimer() {
+    clearInterval(gameTimer);
+    gameTimer = setInterval(() => {
+        totalTimeElapsed = Math.floor((Date.now() - gameStartTime) / 1000);
+        updateGameStats();
+    }, 1000);
+}
+
+function updateGameStats() {
+    document.getElementById('totalScore').textContent = totalScore;
+    document.getElementById('gamesCompleted').textContent = `${gamesPlayed}/${totalGames}`;
+    
+    // Format time as MM:SS
+    const minutes = Math.floor(totalTimeElapsed / 60).toString().padStart(2, '0');
+    const seconds = (totalTimeElapsed % 60).toString().padStart(2, '0');
+    document.getElementById('totalTime').textContent = `${minutes}:${seconds}`;
+    
+    // Update progress bar
+    const progress = (gamesPlayed / totalGames) * 100;
+    document.getElementById('gameProgress').style.width = `${progress}%`;
+}
+
+/* --- Scene 1: Intro --- */
+document.getElementById("startButton").addEventListener("click", () => {
+    changeScene("quiz");
+    startQuizFlow();
+});
 
 function changeScene(id) {
     scenes[currentScene].classList.remove("active");
@@ -253,122 +558,804 @@ function changeScene(id) {
     scenes[currentScene].classList.add("active");
 }
 
-/* --- Scene 1: Intro --- */
-document.getElementById("startButton").addEventListener("click", () => {
-    // document.getElementById("ambient-sound").play().catch(e => console.log("Autoplay failed."));
-    changeScene("quiz");
-    startCanvasMagic('fireflies');
-    startQuizFlow();
-});
-
 /* --- Scene 2: Quiz Logic --- */
 const quizQuestions = [
-    { q: "What is your name?", inputId: "q1", correct: "Suhani", skipCheck: true },
-    { q: "What is your pet name?", inputId: "q2", correct: "Suii", skipCheck: true },
-    { q: "When is your birthday?", inputId: "q3", correct: "01/12/2000", skipCheck: true },
-    { q: "Who is your best friend?", inputId: "q6", correct: ["Nishant","Nishu","Nishant Patil"], skipCheck: false }
+    { 
+        q: "What is your name?", 
+        inputId: "q1", 
+        correct: "suhani", 
+        hint: "It starts with 'S' and rhymes with 'rani'!" 
+    },
+    { 
+        q: "What is your pet name?", 
+        inputId: "q2", 
+        correct: "suii", 
+        hint: "It's the sound of something refreshing and cool!" 
+    },
+    { 
+        q: "When is your birthday? (DD/MM/YYYY)", 
+        inputId: "q3", 
+        correct: "18", 
+        hint: "The unique day of December!" 
+    },
+    { 
+        q: "Who is your best friend?", 
+        inputId: "q4", 
+        correct: ["Nishant", "Nishu", "Nishant Patil", "Nisha","nisha","nishant"], 
+        hint: "He made this surprise for you! 😉" 
+    },
+    { 
+        q: "What's your favorite color?", 
+        inputId: "q5", 
+        correct: ["Pink", "Black", "White", "Blue", "Red"], 
+        hint: "Think of the colors you wear most often!" 
+    }
 ];
 
-let currentIndex = 0;
+let currentQuizIndex = 0;
 const quizFlow = document.getElementById("quiz-flow");
 
 function startQuizFlow() {
-    currentIndex = 0;
+    currentQuizIndex = 0;
     displayQuestion();
 }
 
 function displayQuestion() {
-    if (currentIndex >= quizQuestions.length) return endQuiz();
-    let q = quizQuestions[currentIndex];
+    if (currentQuizIndex >= quizQuestions.length) {
+        endQuiz();
+        return;
+    }
+    
+    let q = quizQuestions[currentQuizIndex];
+    const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
 
     quizFlow.innerHTML = `
-        <h2 style="color:var(--color-pink);">${q.q}</h2>
-        <input id="${q.inputId}" type="text" placeholder="Type here..." style="width:80%; max-width:300px;">
-        <button id="next-q-btn" class="glowing-button">Next →</button>
-        <p id="quiz-error" style="color:red; display:none; background:rgba(255,0,0,0.1); padding:5px; border-radius:5px;">Wrong Answer. Try again!</p>
+        <h2 style="color:var(--color-pink); margin-bottom: 20px;">${q.q}</h2>
+        <div style="color: var(--color-gold); font-style: italic; margin-bottom: 10px;">
+            ${q.hint || "No hint available"}
+        </div>
+        <input id="${q.inputId}" type="text" placeholder="Type your answer..." 
+               style="width:80%; max-width:300px; margin: 20px 0;">
+        <div style="display: flex; gap: 15px; justify-content: center;">
+            <button id="next-q-btn" class="glowing-button mini-btn">Submit Answer →</button>
+            <button id="hint-btn" class="mini-btn" style="background: rgba(255,215,0,0.2);">💡 Hint</button>
+        </div>
+        <p id="quiz-error" style="color:red; display:none; background:rgba(255,0,0,0.1); 
+           padding:10px; border-radius:5px; margin-top: 10px;">
+            Not quite right! Try again or click the hint button for help.
+        </p>
     `;
 
-    document.getElementById("next-q-btn").onclick = () => {
-        let val = document.getElementById(q.inputId).value.trim();
-        const errorElement = document.getElementById("quiz-error");
+    const nextBtn = document.getElementById("next-q-btn");
+    const hintBtn = document.getElementById("hint-btn");
+    const errorElement = document.getElementById("quiz-error");
+    const inputField = document.getElementById(q.inputId);
 
-        if (q.skipCheck || q.correct.map(x => x.toLowerCase()).includes(val.toLowerCase())) {
+    nextBtn.onclick = () => {
+        let val = inputField.value.trim();
+        
+        if (correctAnswers.some(x => x.toLowerCase() === val.toLowerCase())) {
             errorElement.style.display = "none";
-            document.getElementById("next-q-btn").disabled = true;
-            document.getElementById("next-q-btn").textContent = 'Loading...';
+            nextBtn.disabled = true;
+            nextBtn.textContent = 'Correct! 🎉';
+            nextBtn.style.background = 'linear-gradient(90deg, #00ff88, #00ccff)';
+            
+            // Add score
+            totalScore += 50;
+            updateGameStats();
+            
             setTimeout(() => {
-                currentIndex++;
+                currentQuizIndex++;
                 displayQuestion();
-            }, 500);
+            }, 1000);
         } else {
             errorElement.style.display = "block";
+            // Vibrate on wrong answer
+            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
         }
     };
-    
-    document.getElementById(q.inputId).addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') document.getElementById("next-q-btn").click();
+
+    hintBtn.onclick = () => {
+        alert(`💡 Hint: ${q.hint}`);
+        totalScore -= 10; // Penalty for using hint
+        if (totalScore < 0) totalScore = 0;
+        updateGameStats();
+    };
+
+    inputField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') nextBtn.click();
     });
+    
+    inputField.focus();
 }
 
 function endQuiz() {
+    // Show cake baking animation
     changeScene("reveal");
-    startCanvasMagic('hearts-balloons-fireworks');
-    setTimeout(() => initMiniGames(), 4000);
+    
+    // Animate cake progress
+    const progressBar = document.getElementById('cakeProgress');
+    let progress = 0;
+    const bakingInterval = setInterval(() => {
+        progress += 5;
+        progressBar.style.width = `${progress}%`;
+        
+        if (progress >= 100) {
+            clearInterval(bakingInterval);
+            setTimeout(() => initMiniGames(), 1000);
+        }
+    }, 200);
 }
 
-/* --- Scene 4: Games Logic --- */
+/* --- Scene 3: ENHANCED MINI-GAMES --- */
+
 function initMiniGames() {
     changeScene("games");
-    const gameArea = document.getElementById('game-area');
-    gamesCompleted = 0;
+    initGameSystem();
+    gamesPlayed = 0;
+    loadNextGame();
+}
 
-    gameArea.innerHTML = `
-        <div id="game1-container" class="game-container">
-            <h3>🎁 Game 1: Choose a Magical Gift!</h3>
-            <div id="gift-options" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
-                <button class="glowing-button mini-btn" data-gift="teddy">🧸 Teddy</button>
-                <button class="glowing-button mini-btn" data-gift="rose">🌹 Rose</button>
-                <button class="glowing-button mini-btn" data-gift="ring">💍 Ring</button>
-            </div>
-            <p id="gift-result" style="margin-top: 20px; font-weight: bold; color: var(--color-pink); height: 30px;"></p>
+function loadNextGame() {
+    const gameArea = document.getElementById('game-area');
+    
+    if (gamesPlayed >= totalGames) {
+        showCompletionCelebration();
+        return;
+    }
+
+    // Game sequence with increasing difficulty
+    const games = [
+        createBirthdayMemoryGame,
+        createWordScrambleGame,
+        createCakeDecoratingGame,
+        createLoveQuizGame,
+        createFinalChallengeGame
+    ];
+
+    const gameCreator = games[gamesPlayed];
+    gameArea.innerHTML = '';
+    currentGame = gameCreator();
+    gameArea.appendChild(currentGame.container);
+    
+    // Update UI
+    document.getElementById('finish-games-btn').style.display = 'none';
+    gamesPlayed++;
+    updateGameStats();
+}
+
+/* Game 1: Birthday Memory Game */
+function createBirthdayMemoryGame() {
+    const container = document.createElement('div');
+    container.className = 'game-container';
+    container.innerHTML = `
+        <h3>🎂 Game ${gamesPlayed + 1}: Birthday Memory Match</h3>
+        <p>Match pairs of birthday-themed items!</p>
+        <div class="memory-grid" id="memoryGrid"></div>
+        <p>Matches: <span id="matchCount">0</span>/6 | Time: <span id="gameTimer">30</span>s</p>
+        <p class="result" style="margin-top: 10px;"></p>
+    `;
+
+    const symbols = ['🎂', '🎁', '🎈', '🎉', '❤️', '✨', '🎂', '🎁', '🎈', '🎉', '❤️', '✨'];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let gameTime = 30;
+    let canFlip = true;
+
+    // Shuffle symbols
+    symbols.sort(() => Math.random() - 0.5);
+
+    const memoryGrid = container.querySelector('#memoryGrid');
+    const matchCount = container.querySelector('#matchCount');
+    const gameTimerElement = container.querySelector('#gameTimer');
+    const resultElement = container.querySelector('.result');
+
+    // Create cards
+    symbols.forEach((symbol, index) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.symbol = symbol;
+        card.dataset.index = index;
+        
+        const cardFront = document.createElement('div');
+        cardFront.textContent = '?';
+        cardFront.style.cssText = 'width:100%; height:100%; display:flex; align-items:center; justify-content:center;';
+        
+        card.appendChild(cardFront);
+        card.addEventListener('click', () => flipCard(card));
+        memoryGrid.appendChild(card);
+    });
+
+    function flipCard(card) {
+        if (!canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) 
+            return;
+        
+        card.classList.add('flipped');
+        card.textContent = card.dataset.symbol;
+        flippedCards.push(card);
+        
+        if (flippedCards.length === 2) {
+            canFlip = false;
+            const [card1, card2] = flippedCards;
+            
+            if (card1.dataset.symbol === card2.dataset.symbol) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                matchCount.textContent = matchedPairs;
+                
+                // Play match sound effect
+                if (matchedPairs === 6) {
+                    clearInterval(timer);
+                    resultElement.textContent = "Perfect! All matches found! 🎉";
+                    resultElement.style.color = "var(--color-green)";
+                    
+                    totalScore += 100;
+                    setTimeout(() => completeGame(), 1500);
+                }
+                canFlip = true;
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    card1.textContent = '?';
+                    card2.textContent = '?';
+                    canFlip = true;
+                }, 1000);
+            }
+            flippedCards = [];
+        }
+    }
+
+    // Game timer
+    const timer = setInterval(() => {
+        gameTime--;
+        gameTimerElement.textContent = gameTime;
+        
+        if (gameTime <= 0) {
+            clearInterval(timer);
+            resultElement.textContent = "Time's up! Try again!";
+            resultElement.style.color = "red";
+            setTimeout(() => loadNextGame(), 2000);
+        }
+    }, 1000);
+
+    return { container };
+}
+
+/* Game 2: Word Scramble - Birthday Theme */
+function createWordScrambleGame() {
+    const words = [
+        { scrambled: "HRAPY", answer: "HAPPY", hint: "Opposite of sad" },
+        { scrambled: "YRTBHADI", answer: "BIRTHDAY", hint: "Your special day" },
+        { scrambled: "USII", answer: "SUII", hint: "Your pet name" },
+        { scrambled: "SHINANT", answer: "NISHANT", hint: "Your best friend" }
+    ];
+    
+    const container = document.createElement('div');
+    container.className = 'game-container';
+    container.innerHTML = `
+        <h3>🎯 Game ${gamesPlayed + 1}: Birthday Word Scramble</h3>
+        <p>Unscramble the words to reveal birthday messages!</p>
+        <div class="word-scramble-container">
+            <div class="scrambled-word" id="scrambledWord"></div>
+            <p>Hint: <span id="wordHint"></span></p>
+            <div class="letter-slots" id="letterSlots"></div>
+            <div class="letter-options" id="letterOptions"></div>
+            <p>Words solved: <span id="wordsSolved">0</span>/${words.length}</p>
+            <p class="result" style="margin-top: 10px;"></p>
         </div>
     `;
 
-    // Game 1 Logic
-    document.querySelectorAll('#gift-options button').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            if (gamesCompleted === 0) {
-                document.getElementById('gift-result').innerHTML = `You chose a ${e.target.textContent.trim()}! (Game 1 Complete!)`;
-                document.getElementById('gift-options').style.pointerEvents = 'none';
-                gamesCompleted++;
-                checkGameCompletion();
-            }
+    let currentWordIndex = 0;
+    let solvedWords = 0;
+    const scrambledWord = container.querySelector('#scrambledWord');
+    const wordHint = container.querySelector('#wordHint');
+    const letterSlots = container.querySelector('#letterSlots');
+    const letterOptions = container.querySelector('#letterOptions');
+    const wordsSolved = container.querySelector('#wordsSolved');
+    const resultElement = container.querySelector('.result');
+
+    function loadWord() {
+        const word = words[currentWordIndex];
+        scrambledWord.textContent = word.scrambled.split('').join(' ');
+        wordHint.textContent = word.hint;
+        
+        letterSlots.innerHTML = '';
+        letterOptions.innerHTML = '';
+        
+        // Create letter slots
+        for (let i = 0; i < word.answer.length; i++) {
+            const slot = document.createElement('div');
+            slot.className = 'letter-slot';
+            slot.dataset.index = i;
+            letterSlots.appendChild(slot);
+        }
+        
+        // Create draggable letters
+        const letters = word.scrambled.split('');
+        letters.forEach((letter, index) => {
+            const option = document.createElement('div');
+            option.className = 'letter-option';
+            option.textContent = letter;
+            option.draggable = true;
+            option.dataset.index = index;
+            
+            option.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', letter);
+                option.classList.add('dragging');
+            });
+            
+            option.addEventListener('dragend', () => {
+                option.classList.remove('dragging');
+            });
+            
+            letterOptions.appendChild(option);
         });
-    });
+        
+        // Make slots droppable
+        const slots = letterSlots.querySelectorAll('.letter-slot');
+        slots.forEach(slot => {
+            slot.addEventListener('dragover', (e) => e.preventDefault());
+            slot.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const letter = e.dataTransfer.getData('text/plain');
+                slot.textContent = letter;
+                slot.classList.add('filled');
+                checkSolution();
+            });
+        });
+    }
+
+    function checkSolution() {
+        const slots = letterSlots.querySelectorAll('.letter-slot');
+        const userAnswer = Array.from(slots).map(slot => slot.textContent).join('');
+        
+        if (userAnswer === words[currentWordIndex].answer) {
+            resultElement.textContent = "Correct! 🎉";
+            resultElement.style.color = "var(--color-green)";
+            solvedWords++;
+            wordsSolved.textContent = solvedWords;
+            totalScore += 75;
+            
+            if (solvedWords === words.length) {
+                resultElement.textContent += " All words solved! Amazing!";
+                setTimeout(() => completeGame(), 1500);
+            } else {
+                currentWordIndex++;
+                setTimeout(() => {
+                    resultElement.textContent = '';
+                    loadWord();
+                }, 1000);
+            }
+        }
+    }
+
+    loadWord();
+    return { container };
 }
 
-function checkGameCompletion() {
-    // Only one game for this version, so transition immediately
-    if (gamesCompleted >= 1) { 
-        document.getElementById('finish-games-btn').style.display = 'block';
+/* Game 3: Cake Decorating Game */
+function createCakeDecoratingGame() {
+    const container = document.createElement('div');
+    container.className = 'game-container';
+    container.innerHTML = `
+        <h3>🎨 Game ${gamesPlayed + 1}: Decorate Suii's Cake</h3>
+        <p>Click to add decorations to the birthday cake!</p>
+        <div style="position: relative; width: 300px; height: 300px; margin: 20px auto; 
+                    background: linear-gradient(135deg, #f9d5e5, #eeac99); border-radius: 50%; 
+                    cursor: pointer;" id="cakeCanvas">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                        color: var(--bg-dark); font-weight: bold;">Click to Decorate!</div>
+        </div>
+        <p>Decorations: <span id="decoCount">0</span>/20</p>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+            <button class="mini-btn" id="resetCake">🔄 Reset</button>
+            <button class="mini-btn" id="finishCake">🎉 Finish</button>
+        </div>
+        <p class="result" style="margin-top: 10px;"></p>
+    `;
+
+    const cakeCanvas = container.querySelector('#cakeCanvas');
+    const decoCount = container.querySelector('#decoCount');
+    const resultElement = container.querySelector('.result');
+    let decorationCount = 0;
+    const decorations = ['🎂', '🍓', '🍒', '⭐', '❤️', '✨', '🎀', '🌈', '🎁', '🎈'];
+
+    cakeCanvas.addEventListener('click', (e) => {
+        if (decorationCount >= 20) return;
+        
+        const rect = cakeCanvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const deco = document.createElement('div');
+        deco.textContent = decorations[Math.floor(Math.random() * decorations.length)];
+        deco.style.position = 'absolute';
+        deco.style.left = `${x}px`;
+        deco.style.top = `${y}px`;
+        deco.style.fontSize = '20px';
+        deco.style.transform = 'translate(-50%, -50%)';
+        deco.style.cursor = 'pointer';
+        deco.style.userSelect = 'none';
+        
+        deco.addEventListener('click', (e) => {
+            e.stopPropagation();
+            deco.remove();
+            decorationCount--;
+            decoCount.textContent = decorationCount;
+        });
+        
+        cakeCanvas.appendChild(deco);
+        decorationCount++;
+        decoCount.textContent = decorationCount;
+        
+        if (decorationCount >= 20) {
+            resultElement.textContent = "Beautiful cake! 🎂✨";
+            resultElement.style.color = "var(--color-pink)";
+            totalScore += 125;
+        }
+    });
+
+    container.querySelector('#resetCake').addEventListener('click', () => {
+        cakeCanvas.querySelectorAll('div').forEach(el => {
+            if (el !== cakeCanvas.firstElementChild) el.remove();
+        });
+        decorationCount = 0;
+        decoCount.textContent = '0';
+        resultElement.textContent = '';
+    });
+
+    container.querySelector('#finishCake').addEventListener('click', () => {
+        if (decorationCount >= 10) {
+            completeGame();
+        } else {
+            resultElement.textContent = "Add at least 10 decorations!";
+            resultElement.style.color = "orange";
+        }
+    });
+
+    return { container };
+}
+
+/* Game 4: Love Quiz Game */
+function createLoveQuizGame() {
+    const questions = [
+        {
+            question: "What's the best memory with Suii?",
+            options: ["First Meeting", "Long Drives", "Food Adventures", "All of the Above"],
+            correct: 3
+        },
+        {
+            question: "What makes Suii smile the most?",
+            options: ["Food", "Compliments", "Surprises", "All Three"],
+            correct: 3
+        },
+        {
+            question: "What's Suii's superpower?",
+            options: ["Making people happy", "Being awesome", "Both", "Neither"],
+            correct: 2
+        }
+    ];
+
+    const container = document.createElement('div');
+    container.className = 'game-container';
+    let currentQuestion = 0;
+    let correctAnswers = 0;
+
+    function loadQuestion() {
+        if (currentQuestion >= questions.length) {
+            showResults();
+            return;
+        }
+
+        const q = questions[currentQuestion];
+        container.innerHTML = `
+            <h3>❤️ Game ${gamesPlayed + 1}: Know Your Suii Quiz</h3>
+            <p>Question ${currentQuestion + 1}/${questions.length}</p>
+            <h4 style="color: var(--color-pink); margin: 20px 0;">${q.question}</h4>
+            <div id="quizOptions" style="display: flex; flex-direction: column; gap: 10px; margin: 20px 0;">
+                ${q.options.map((option, index) => `
+                    <button class="mini-btn" data-index="${index}" 
+                            style="text-align: left; padding: 15px; font-size: 1.1em;">
+                        ${option}
+                    </button>
+                `).join('')}
+            </div>
+            <p>Correct: ${correctAnswers}/${currentQuestion}</p>
+            <p class="result" style="margin-top: 10px;"></p>
+        `;
+
+        const options = container.querySelectorAll('#quizOptions button');
+        const resultElement = container.querySelector('.result');
+
+        options.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedIndex = parseInt(btn.dataset.index);
+                
+                if (selectedIndex === q.correct) {
+                    resultElement.textContent = "Correct! 🎉";
+                    resultElement.style.color = "var(--color-green)";
+                    btn.style.background = "linear-gradient(90deg, #00ff88, #00ccff)";
+                    correctAnswers++;
+                    totalScore += 50;
+                } else {
+                    resultElement.textContent = "Not quite! Try the next one.";
+                    resultElement.style.color = "orange";
+                    btn.style.background = "rgba(255,0,0,0.3)";
+                }
+                
+                options.forEach(b => b.disabled = true);
+                
+                setTimeout(() => {
+                    currentQuestion++;
+                    loadQuestion();
+                }, 1500);
+            });
+        });
+    }
+
+    function showResults() {
+        container.innerHTML = `
+            <h3>❤️ Quiz Complete!</h3>
+            <p style="font-size: 1.2em; margin: 20px 0;">
+                You got ${correctAnswers} out of ${questions.length} correct!
+            </p>
+            <p style="color: var(--color-gold); font-size: 1.5em; margin: 20px 0;">
+                ${correctAnswers === questions.length ? 
+                  "Perfect! You know Suii perfectly! ❤️" : 
+                  "Good job! You know Suii well! 😊"}
+            </p>
+            <button class="glowing-button mini-btn" id="continueQuiz">Continue</button>
+        `;
+        
+        container.querySelector('#continueQuiz').addEventListener('click', completeGame);
+        
+        // Bonus score for perfect quiz
+        if (correctAnswers === questions.length) {
+            totalScore += 100;
+        }
+    }
+
+    loadQuestion();
+    return { container };
+}
+
+/* Game 5: Final Challenge */
+function createFinalChallengeGame() {
+    const container = document.createElement('div');
+    container.className = 'game-container';
+    container.innerHTML = `
+        <h3>🏆 Game ${gamesPlayed + 1}: Final Birthday Challenge</h3>
+        <p>Quick! Tap the birthday items before time runs out!</p>
+        <div style="position: relative; width: 400px; height: 300px; margin: 20px auto; 
+                    background: rgba(255,255,255,0.1); border-radius: 15px; overflow: hidden;" 
+             id="tapGameArea">
+        </div>
+        <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+            <div>🎯 Score: <span id="tapScore">0</span></div>
+            <div>⏱️ Time: <span id="tapTime">30</span>s</div>
+            <div>🎯 Target: <span id="tapTarget">20</span></div>
+        </div>
+        <p class="result" style="margin-top: 10px;"></p>
+    `;
+
+    const tapGameArea = container.querySelector('#tapGameArea');
+    const tapScore = container.querySelector('#tapScore');
+    const tapTime = container.querySelector('#tapTime');
+    const tapTarget = container.querySelector('#tapTarget');
+    const resultElement = container.querySelector('.result');
+    
+    let score = 0;
+    let timeLeft = 30;
+    const target = 20;
+    const items = ['🎂', '🎁', '🎈', '🎉', '❤️', '✨', '⭐', '🎀'];
+    let gameActive = true;
+
+    // Game timer
+    const gameTimer = setInterval(() => {
+        if (!gameActive) return;
+        
+        timeLeft--;
+        tapTime.textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(gameTimer);
+            gameActive = false;
+            endTapGame();
+        }
+    }, 1000);
+
+    // Create falling items
+    function createItem() {
+        if (!gameActive) return;
+        
+        const item = document.createElement('div');
+        item.textContent = items[Math.floor(Math.random() * items.length)];
+        item.style.position = 'absolute';
+        item.style.left = `${Math.random() * 350}px`;
+        item.style.top = '-50px';
+        item.style.fontSize = '30px';
+        item.style.cursor = 'pointer';
+        item.style.userSelect = 'none';
+        item.style.transition = 'transform 0.2s';
+        
+        item.addEventListener('click', () => {
+            if (!gameActive) return;
+            
+            score++;
+            tapScore.textContent = score;
+            item.style.transform = 'scale(1.5)';
+            item.style.opacity = '0.5';
+            
+            // Vibrate on tap
+            if (navigator.vibrate) navigator.vibrate(50);
+            
+            setTimeout(() => item.remove(), 200);
+            
+            if (score >= target) {
+                clearInterval(gameTimer);
+                gameActive = false;
+                winTapGame();
+            }
+        });
+        
+        tapGameArea.appendChild(item);
+        
+        // Animate falling
+        let position = -50;
+        const fallInterval = setInterval(() => {
+            if (!gameActive) {
+                clearInterval(fallInterval);
+                return;
+            }
+            
+            position += 2;
+            item.style.top = `${position}px`;
+            
+            if (position > 300) {
+                clearInterval(fallInterval);
+                item.remove();
+            }
+        }, 20);
+    }
+
+    // Create items periodically
+    const itemInterval = setInterval(() => {
+        if (!gameActive) {
+            clearInterval(itemInterval);
+            return;
+        }
+        createItem();
+    }, 500);
+
+    function winTapGame() {
+        resultElement.textContent = "AMAZING! You completed all challenges! 🎉🏆";
+        resultElement.style.color = "var(--color-gold)";
+        resultElement.style.fontSize = "1.2em";
+        totalScore += 200;
+        setTimeout(() => completeGame(), 2000);
+    }
+
+    function endTapGame() {
+        resultElement.textContent = `Time's up! You scored ${score} points.`;
+        resultElement.style.color = score >= target ? "var(--color-green)" : "orange";
+        
+        if (score >= target) {
+            winTapGame();
+        } else {
+            setTimeout(() => loadNextGame(), 3000);
+        }
+    }
+
+    return { container };
+}
+
+/* Game Completion Handler */
+function completeGame() {
+    updateGameStats();
+    
+    if (gamesPlayed >= totalGames) {
+        showCompletionCelebration();
+    } else {
+        setTimeout(() => loadNextGame(), 1000);
     }
 }
 
-document.getElementById('finish-games-btn').addEventListener('click', () => {
+function showCompletionCelebration() {
+    clearInterval(gameTimer);
+    
+    const celebration = document.getElementById('completionCelebration');
+    const finalScore = document.getElementById('finalScore');
+    
+    finalScore.textContent = totalScore;
+    celebration.classList.add('active');
+    
+    // Play celebration sound
+    try {
+        const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3');
+        audio.volume = 0.5;
+        audio.play();
+    } catch (e) {
+        console.log("Celebration sound error:", e);
+    }
+    
+    // Fireworks effect
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            createFirework();
+        }, i * 100);
+    }
+}
+
+document.getElementById('continueToFinal').addEventListener('click', () => {
+    document.getElementById('completionCelebration').classList.remove('active');
     changeScene('final');
     startFinalReveal();
 });
 
+function createFirework() {
+    const firework = document.createElement('div');
+    firework.style.position = 'fixed';
+    firework.style.width = '10px';
+    firework.style.height = '10px';
+    firework.style.background = ['#ff69b4', '#8a2be2', '#ffd700', '#00ff88'][Math.floor(Math.random() * 4)];
+    firework.style.borderRadius = '50%';
+    firework.style.left = `${Math.random() * 100}vw`;
+    firework.style.top = `${Math.random() * 100}vh`;
+    firework.style.boxShadow = '0 0 20px currentColor';
+    firework.style.zIndex = '999';
+    
+    document.body.appendChild(firework);
+    
+    setTimeout(() => {
+        firework.style.transform = `scale(${Math.random() * 3 + 2})`;
+        firework.style.opacity = '0';
+        setTimeout(() => firework.remove(), 1000);
+    }, 100);
+}
+
+/* --- Button Event Listeners --- */
+document.getElementById('hintBtn').addEventListener('click', () => {
+    alert("💡 Hint: Think about what makes Suii happy! Focus on birthday memories.");
+    totalScore -= 25;
+    if (totalScore < 0) totalScore = 0;
+    updateGameStats();
+});
+
+document.getElementById('skipBtn').addEventListener('click', () => {
+    if (confirm("Skip this game? You'll lose 50 points.")) {
+        totalScore = Math.max(0, totalScore - 50);
+        loadNextGame();
+    }
+});
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+    if (confirm("Restart all games? Your progress will be lost.")) {
+        initMiniGames();
+    }
+});
+
+document.getElementById('finish-games-btn').addEventListener('click', () => {
+    if (gamesPlayed >= totalGames) {
+        changeScene('final');
+        startFinalReveal();
+    } else {
+        alert(`Complete all ${totalGames} games first! You've done ${gamesPlayed}/${totalGames}.`);
+    }
+});
 
 /* --- Scene 5: Final Reveal & Wishes --- */
-
 const birthdayWishes = [
-    "Happy Birthday, my Suii. You're the magic in my everyday, the heartbeat in my story, and the most precious chapter in my life. ❤️",
-    "Wishing you a year filled with the same unconditional love, respect, and boundless happiness you give to me. Always and forever, Nishu.",
-    "I hope today feels as cinematic and magical as you make my life feel. You are a masterpiece, Suii. ✨",
-    "On your special day, may all the glitter and gold from this magical realm we've created rain down on you. Dream big!",
-    "Cheers to the girl who's as sweet as chocolate, as bold as a heart explosion, and as reliable as a Nishu promise. Have the absolute best day! 🥳"
+    "Happy Birthday, my Suii! You're the magic in my everyday, the heartbeat in my story, and the most precious chapter in my life. ❤️",
+    "To my partner, my upcoming depEx partner, and my bestesssssst friend – wishing you love, laughter, and endless fun. ✨",
+    "Sometimes gadddarrrrrrrr, sometimes angel – but always the most amazing Suii ever! 😎",
+    "May your day be as cinematic and magical as you make my life feel. You are a masterpiece, Suii. 🌟",
+    "On your special day, all the glitter, gold, hearts, and laughter rain down on you. Dream big and shine bright! 🥳",
+    "Every moment with you is a celebration. Today, the whole world celebrates YOU! 🎉",
+    "To the girl who turned my world into a fairy tale – may your birthday be as wonderful as you are! 🧚‍♀️"
 ];
+
 let currentWishIndex = 0;
 
 function typeWriter(element, text, speed, callback) {
@@ -376,7 +1363,7 @@ function typeWriter(element, text, speed, callback) {
     element.innerHTML = '';
     function typing() {
         if (i < text.length) {
-            element.innerHTML += text.charAt(i).replace('\n', '<br>');
+            element.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
             i++;
             setTimeout(typing, speed);
         } else if (callback) {
@@ -387,16 +1374,12 @@ function typeWriter(element, text, speed, callback) {
 }
 
 function startFinalReveal() {
-    startCanvasMagic('heart-rain-lights');
-
     const line1 = document.getElementById('typewriter-line1');
     const line2 = document.getElementById('typewriter-line2');
-    
-    // Line 1: Main Birthday Wish
-    typeWriter(line1, "Happy Birthday My Best Friend Suii ❤️\n\n You are the most special person in my life.", 70, () => {
-        // Line 2: Sender/Signature
+
+    typeWriter(line1, "HAPPY BIRTHDAY MY BEST FRIEND SUII! ❤️\n\nYou scored " + totalScore + " points in the Birthday Games!", 50, () => {
         setTimeout(() => {
-            typeWriter(line2, "From: Nishu ❤️ With Love & Respect Always.", 50, () => {
+            typeWriter(line2, "From: Nishant  😎\nWith Love, Fun & Respect Always and you sometimes gaddar suii ,Sih Partner .", 50, () => {
                 displayWishes();
             });
         }, 500);
@@ -406,124 +1389,42 @@ function startFinalReveal() {
 function displayWishes() {
     const wishElement = document.getElementById('current-wish');
     const nextBtn = document.getElementById('next-wish-btn');
-    
+
     currentWishIndex = 0;
-    wishElement.textContent = birthdayWishes[currentWishIndex];
+    typeWriter(wishElement, birthdayWishes[currentWishIndex], 40);
     nextBtn.style.display = 'inline-block';
 
-    nextBtn.addEventListener('click', () => {
+    nextBtn.onclick = () => {
         currentWishIndex = (currentWishIndex + 1) % birthdayWishes.length;
-        wishElement.textContent = birthdayWishes[currentWishIndex];
-        nextBtn.textContent = (currentWishIndex === birthdayWishes.length - 1) ? 'View First Wish Again' : 'View Next Wish →';
-    });
+        typeWriter(wishElement, birthdayWishes[currentWishIndex], 40);
+        nextBtn.textContent = (currentWishIndex === birthdayWishes.length - 1) ? 
+            'Back to First Wish' : 'Next Wish →';
+    };
 }
 
+/* --- Final Scene Buttons --- */
+document.getElementById('uploadBtn').addEventListener('click', () => {
+    alert("Upload feature would open your file browser to add photos!");
+});
 
-/* --- Canvas Magic (Functional Particle System) --- */
+document.getElementById('downloadBtn').addEventListener('click', () => {
+    alert("Downloading your birthday memory poster with score: " + totalScore);
+});
 
-const canvas = document.getElementById('magicCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let canvasAnimationId;
+document.getElementById('whatsapp-share').addEventListener('click', () => {
+    const message = `Check out my birthday surprise from Nishant! I scored ${totalScore} points! 🎉`;
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://wa.me/?text=${message}%20${url}`, '_blank');
+});
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); 
-
-function startCanvasMagic(effect) {
-    cancelAnimationFrame(canvasAnimationId);
-    particles = [];
-    
-    if (effect === 'fireflies') {
-        for (let i = 0; i < 50; i++) particles.push(new Firefly());
-    } else if (effect === 'heart-rain-lights') {
-        for (let i = 0; i < 50; i++) particles.push(new Firefly());
-        for (let i = 0; i < 100; i++) particles.push(new HeartRainDrop());
-    } else if (effect === 'hearts-balloons-fireworks') {
-        for (let i = 0; i < 50; i++) particles.push(new Firefly());
-        for (let i = 0; i < 50; i++) particles.push(new HeartRainDrop());
-        // For a more dramatic effect during the reveal
+/* --- Initialize Canvas --- */
+window.addEventListener('load', () => {
+    const canvas = document.getElementById('magicCanvas');
+    if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
-    animateCanvas();
-}
-
-class Firefly {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.opacity = Math.random();
-    }
-    update() {
-        this.x += this.speedX + Math.sin(Date.now() * 0.001) * 0.3;
-        this.y += this.speedY + Math.cos(Date.now() * 0.001) * 0.3;
-        this.opacity = Math.abs(Math.sin(Date.now() * 0.0005 + this.x * 0.01)) * 0.8;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-    }
-    draw() {
-        ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
-        ctx.shadowColor = 'yellow';
-        ctx.shadowBlur = 5;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
-    }
-}
-
-class HeartRainDrop {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = -Math.random() * canvas.height;
-        this.speed = Math.random() * 1.5 + 1;
-        this.size = Math.random() * 10 + 5;
-        this.color = `rgba(255, 105, 180, ${Math.random() * 0.5 + 0.3})`;
-    }
-    update() {
-        this.y += this.speed;
-        if (this.y > canvas.height) this.y = -this.size;
-    }
-    draw() {
-        // Simple approximation of a heart shape for the particle rain
-        ctx.fillStyle = this.color;
-        const r = this.size * 0.4;
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y + r * 0.4);
-        ctx.bezierCurveTo(this.x + r * 1.5, this.y - r * 1.5, this.x + r * 3, this.y - r * 0.5, this.x + r * 1.5, this.y + r * 2.5);
-        ctx.lineTo(this.x, this.y + r * 3);
-        ctx.lineTo(this.x - r * 1.5, this.y + r * 2.5);
-        ctx.bezierCurveTo(this.x - r * 3, this.y - r * 0.5, this.x - r * 1.5, this.y - r * 1.5, this.x, this.y + r * 0.4);
-        ctx.fill();
-    }
-}
-
-function animateCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Background gradient for depth
-    const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
-    gradient.addColorStop(0, 'rgba(10, 10, 10, 0.05)');
-    gradient.addColorStop(1, 'rgba(10, 10, 10, 0.5)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
-    
-    canvasAnimationId = requestAnimationFrame(animateCanvas);
-}
-
-// Start the initial effect
-startCanvasMagic('fireflies');
-
+});
 </script>
 </body>
 </html>
