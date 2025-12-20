@@ -8,13 +8,3 @@ DataSanity AI is a Python project for **data cleaning, preprocessing, and sanity
 It helps automate routine data preparation tasks so you can focus on **analysis and modeling**.
 
 ---
-
-## 📂 Project Structure
-
-datasanity_ai/
-│
-├── app.py # Main application entry point
-├── requirements.txt # Project dependencies
-├── test_data.csv # Sample CSV data
-├── cleaned/ # Folder for cleaned datasets
-├── utils/ # Utility scripts
