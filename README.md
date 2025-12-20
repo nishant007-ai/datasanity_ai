@@ -1,4 +1,4 @@
-# 🧹 DataSanity AI
+# DataSanity AI
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![AI](https://img.shields.io/badge/AI-Data_Sanity-orange)
