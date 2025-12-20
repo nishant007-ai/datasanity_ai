@@ -18,12 +18,3 @@ datasanity_ai/
 ├── test_data.csv # Sample CSV data
 ├── cleaned/ # Folder for cleaned datasets
 ├── utils/ # Utility scripts
-│ └── data_cleaner.py # Data cleaning functions
-└── venv/ # Virtual environment
-
-yaml
-Copy code
-
----
-
-## ⚙️ Installat
