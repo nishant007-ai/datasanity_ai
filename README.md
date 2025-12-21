@@ -125,4 +125,3 @@ datasanity_ai/
 │
 ├── app.py # Main application entry point
 ├── requirements.txt # Project dependencies
-├── test_data
