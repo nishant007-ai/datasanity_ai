@@ -64,27 +64,7 @@ Clean and preprocess CSV datasets automatically
 
 Remove missing or inconsistent values
 
-Normalize columns and formats
-
-Save cleaned datasets for further analysis
-
-📌 Future Improvements
-Add interactive CLI for file input/output
-
-Support Excel and JSON file formats
-
-Add logging and error handling
-
-Integration with AI models for data validation
-
-🧑‍💻 Author
-Nishant Jadhav
-🌐 GitHub | LinkedIn
-
-⭐ Support
-If you like this project, give it a star 🌟 on GitHub!
-
-yaml
+Normaliz
 Copy code
 
 ---
