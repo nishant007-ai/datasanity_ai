@@ -132,8 +132,21 @@ datasanity_ai/
 └── venv/ # Virtual environment
 
 yaml
-Copy cod
+Copy code
 
+---
+
+## ⚙️ Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/nishant007-ai/datasanity_ai.git
+cd datasanity_ai
+Create and activate a virtual environment:
+
+bash
+Copy code
 python3 -m venv venv
 source venv/bin/activate  # macOS/Linux
 # For Windows: venv\Scripts\activate
