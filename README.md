@@ -107,21 +107,3 @@ Absolutely, Nishant! Here’s a full, polished README.md for your datasanity_ai 
 
 markdown
 Copy code
-# 🧹 DataSanity AI
-
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![AI](https://img.shields.io/badge/AI-Data_Sanity-orange)
-![Status](https://img.shields.io/badge/Status-Active-green)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
-
-DataSanity AI is a Python project designed for **data cleaning, preprocessing, and sanity checks** for CSV datasets.  
-It automates routine data preparation tasks so you can focus on **analysis, modeling, and insights**.
-
----
-
-## 📂 Project Structure
-
-datasanity_ai/
-│
-├── app.py # Main application entry point
-├── requirements.txt # Project dependencies
