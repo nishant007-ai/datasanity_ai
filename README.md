@@ -132,7 +132,7 @@ datasanity_ai/
 └── venv/ # Virtual environment
 
 yaml
-Copy code
+Copy cod
 
 ---
 
