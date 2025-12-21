@@ -10,10 +10,3 @@ It helps automate routine data preparation tasks so you can focus on **analysis 
 ---
 
 ## 📂 Project Structure
-
-datasanity_ai/
-│
-├── app.py # Main application entry point
-├── requirements.txt # Project dependencies
-├── test_data.csv # Sample CSV data
-├── 
