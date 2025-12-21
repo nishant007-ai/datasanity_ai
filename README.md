@@ -37,46 +37,4 @@ Create and activate a virtual environment:
 
 bash
 Copy code
-python3 -m venv venv
-source venv/bin/activate  # macOS/Linux
-# For Windows: venv\Scripts\activate
-Install dependencies:
-
-bash
-Copy code
-pip install -r requirements.txt
-⚠️ Make sure you have all required packages installed.
-If you see ModuleNotFoundError: No module named 'ollama', install it via:
-
-bash
-Copy code
-pip install ollama
-🧠 Usage
-Run the main application:
-
-bash
-Copy code
-python app.py
-The script will load your CSV file, clean the data using utils/data_cleaner.py, and save the cleaned version to the cleaned/ folder.
-
-🚀 Features
-Clean and preprocess CSV datasets automatically
-
-Remove missing or inconsistent values
-
-Normaliz
-Copy code
-
----
-
-If you want, I can also **add badges for Python version, build status, and “Coming Soon features”** at the top to make it more visually attractive for GitHub.  
-
-Do you want me to do that?
-
-
-
-
-
-
-You said:
-gi ve mfull 
+python3 -m venv ven
