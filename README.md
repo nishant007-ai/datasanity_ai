@@ -100,10 +100,3 @@ Do you want me to do that?
 
 You said:
 gi ve mfull 
-
-
-ChatGPT said:
-Absolutely, Nishant! Here’s a full, polished README.md for your datasanity_ai project, including badges, instructions, features, and future improvements. You can push this directly to GitHub.
-
-markdown
-Copy code
