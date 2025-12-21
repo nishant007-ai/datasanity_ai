@@ -16,25 +16,4 @@ datasanity_ai/
 ├── app.py # Main application entry point
 ├── requirements.txt # Project dependencies
 ├── test_data.csv # Sample CSV data
-├── cleaned/ # Folder for cleaned datasets
-├── utils/ # Utility scripts
-│ └── data_cleaner.py # Data cleaning functions
-└── venv/ # Virtual environment
-
-yaml
-Copy code
-
----
-
-## ⚙️ Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/nishant007-ai/datasanity_ai.git
-cd datasanity_ai
-Create and activate a virtual environment:
-
-bash
-Copy code
-python3 -m venv ven
+├── 
